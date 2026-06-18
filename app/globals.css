@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro-Display-Regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro-Display-Medium.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro-Display-Bold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato-Bold.ttf");
+  font-weight: 700;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #a7c7e7;
+  --soft-blue: #2e4053;
+  --bank-green: #2e8b57;
+  --primary-dark: #1f1f1f;
+  --warning: #f4d03f;
+  --error: #c0392b;
+  --neutral-gray: #bdc3c7;
+  --success: #27ae60;
+
+  --card: #ffffff;
+  --card-dark: #2e4053;
+
+  --text-primary: #1f1f1f;
+  --text-secondary: #5e6b76;
+
+  --border: rgba(0, 0, 0, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: "Lato", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+  font-family: "SF Pro", sans-serif;
+}
+
+.font-sf {
+  font-family: "SF Pro", sans-serif;
+}
+
+.font-lato {
+  font-family: "Lato", sans-serif;
 }
