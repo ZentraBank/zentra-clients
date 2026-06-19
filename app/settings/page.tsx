@@ -59,15 +59,15 @@ export default function SettingsSupportPage() {
           </h1>
         </header>
 
- <div className="relative mx-auto mt-8 h-[180px] w-[260px]">
-  <Image
-    src="/images/profile-setting-2.png"
-    alt="Settings support"
-    fill
-    priority
-    className="object-contain"
-  />
-</div>
+    <div className="relative mx-auto mt-8 h-[180px] w-[260px]">
+    <Image
+        src="/images/profile-setting-2.png"
+        alt="Settings support"
+        fill
+        priority
+        className="object-contain"
+    />
+    </div>
 
         <section className="mx-auto mt-7 max-w-[320px] space-y-2">
           <MenuLink href="/profile/settings" title="Edit Profile" />
