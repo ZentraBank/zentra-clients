@@ -295,7 +295,7 @@ export default function AddBankAccountPage() {
 
             {resolvedAccount && selectedBankAccountMatches && (
               <div className="space-y-4">
-                <input
+                <input title="Account name"
                   readOnly
                   value={resolvedAccount.accountName}
                   className="h-[28px] w-full rounded-[5px] bg-white px-3 text-[13px] text-[#333] outline-none"
@@ -345,7 +345,7 @@ export default function AddBankAccountPage() {
             className={`flex h-[36px] w-[273px] items-center justify-center gap-3 rounded-[9px] text-[14px] font-semibold text-white transition ${
               canSubmit && selectedBankAccountMatches
                 ? "bg-[#1D4ED8] shadow-lg active:scale-[0.98]"
-                : "bg-[#1D4ED8]/60"
+                : "bg-[#1D4ED8]"
             }`}
           >
             Add account
