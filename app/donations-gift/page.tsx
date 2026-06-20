@@ -80,14 +80,15 @@ export default function DonationsAndGiftPage() {
               {item.title}
             </h2>
 
-            <p className="mt-2 text-[10px] font-medium leading-[11px] text-[#777]">
-              {item.description}
-            </p>
+            
           </div>
         </div>
       </div>
 
       <div className="mt-2 flex justify-end">
+        <p className="mt-2 text-[10px] font-medium leading-[11px] text-[#777]">
+              {item.description}
+            </p>
         <button
           onClick={(e) => {
             e.stopPropagation();
