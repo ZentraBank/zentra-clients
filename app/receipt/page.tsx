@@ -2,12 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowDownLeft,
   ArrowLeft,
   ArrowUpRight,
   Share2,
   X,
+  SendHorizontal,
+  Mail,
+  MessageSquare,
+  Shield,
 } from "lucide-react";
 
 type TransactionDirection = "credit" | "debit";
@@ -18,10 +23,8 @@ type Transaction = {
   currency: string;
   status: string;
   direction: TransactionDirection;
-
   fromName?: string;
   recipientName?: string;
-
   type: string;
   accountStatus: string;
   date: string;
@@ -41,9 +44,7 @@ const dummyTransaction: Transaction = {
   currency: "$",
   status: "Transaction Successful!",
   direction: "debit",
-
   recipientName: "Michael Roberts",
-
   type: "IntraBank",
   accountStatus: "Verified!",
   date: "Sun. July 03, 2025",
@@ -58,9 +59,10 @@ const dummyTransaction: Transaction = {
 };
 
 export default function TransactionReceiptPage() {
-  const transaction = dummyTransaction;
+  const [showShareOverlay, setShowShareOverlay] = useState(false);
 
-  const isCredit = transaction.direction === "debit";
+  const transaction = dummyTransaction;
+  const isCredit = transaction.direction === "credit";
 
   const amountSign = isCredit ? "+" : "-";
   const amountColor = isCredit ? "text-[#168d5a]" : "text-[#d85b4f]";
@@ -72,14 +74,17 @@ export default function TransactionReceiptPage() {
     ? transaction.fromName || "Unknown Sender"
     : transaction.recipientName || "Unknown Recipient";
 
-  const formattedAmount = `${amountSign}${transaction.currency}${transaction.amount.toLocaleString()}`;
+  const formattedAmount = `${amountSign}${
+    transaction.currency
+  }${transaction.amount.toLocaleString()}`;
 
-  const formattedBalance = `${transaction.currency}${transaction.availableBalance.toLocaleString()}`;
+  const formattedBalance = `${
+    transaction.currency
+  }${transaction.availableBalance.toLocaleString()}`;
 
   const formattedFee = `${transaction.currency}${transaction.fee.toLocaleString()}`;
 
-  const handleShare = async () => {
-    const text = `
+  const receiptText = `
 Transaction Receipt
 
 Amount: ${formattedAmount}
@@ -90,19 +95,31 @@ Date: ${transaction.date}
 Time: ${transaction.time}
 `;
 
-    if (navigator.share) {
-      await navigator.share({
-        title: "Transaction Receipt",
-        text,
-      });
-    } else {
-      await navigator.clipboard.writeText(text);
-      alert("Receipt copied to clipboard");
+  const handleShareOption = async (type: string) => {
+    const encodedText = encodeURIComponent(receiptText);
+
+    if (type === "whatsapp") {
+      window.open(`https://wa.me/?text=${encodedText}`, "_blank");
+      return;
+    }
+
+    if (type === "email") {
+      window.location.href = `mailto:?subject=Transaction Receipt&body=${encodedText}`;
+      return;
+    }
+
+    if (type === "sms") {
+      window.location.href = `sms:?body=${encodedText}`;
+      return;
+    }
+
+    if (type === "telegram") {
+      window.open(`https://t.me/share/url?url=&text=${encodedText}`, "_blank");
     }
   };
 
   return (
-    <main className="min-h-screen bg-[#e8edf3] text-[#3f3f3f] px-5 pb-10 pt-8">
+    <main className="relative min-h-screen overflow-hidden bg-[#e8edf3] px-5 pb-10 pt-8 text-[#3f3f3f]">
       <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col px-5 pb-7 pt-12">
         <header className="relative flex items-center justify-center">
           <Link href="/transactions" className="absolute left-0 text-[#555]">
@@ -163,13 +180,11 @@ Time: ${transaction.time}
 
         <div className="mt-5 space-y-3">
           <Detail label="Type" value={transaction.type} />
-
           <Detail
             label="Current account status"
             value={transaction.accountStatus}
             valueClassName="font-bold text-[#1D4ED8]"
           />
-
           <Detail label="Transaction date" value={transaction.date} />
           <Detail label="Available Balance" value={formattedBalance} />
           <Detail label="Transaction time" value={transaction.time} />
@@ -191,7 +206,8 @@ Time: ${transaction.time}
 
         <div className="mt-10 grid grid-cols-2 gap-3">
           <button
-            onClick={handleShare}
+            type="button"
+            onClick={() => setShowShareOverlay(true)}
             className="flex h-[39px] items-center justify-center gap-3 rounded-[10px] bg-white text-[15px] font-semibold shadow-sm transition active:scale-[0.98]"
           >
             Share
@@ -207,7 +223,111 @@ Time: ${transaction.time}
           </Link>
         </div>
       </section>
+
+      <ShareReceiptOverlay
+        open={showShareOverlay}
+        onClose={() => setShowShareOverlay(false)}
+        onSelect={handleShareOption}
+      />
     </main>
+  );
+}
+
+function ShareReceiptOverlay({
+  open,
+  onClose,
+  onSelect,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onSelect: (type: string) => void;
+}) {
+  return (
+    <div
+      className={`fixed inset-0 z-[100] bg-black/20 transition-opacity duration-300 ${
+        open ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
+      onClick={onClose}
+    >
+      <section
+        onClick={(e) => e.stopPropagation()}
+        className={`fixed bottom-0 left-1/2 w-full max-w-[430px] -translate-x-1/2 rounded-t-[28px] bg-white px-7 pb-8 pt-6 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] transition-transform duration-300 ${
+          open ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <header className="relative flex items-center justify-center">
+          <h2 className="text-[13px] font-bold tracking-[0.03em] text-[#555]">
+            Share receipt
+          </h2>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute right-0 text-black/25"
+          >
+            <X size={20} />
+          </button>
+        </header>
+
+        <div className="mt-7 grid grid-cols-3 place-items-center gap-y-5">
+          <ShareOption
+            label="WhatsApp"
+            type="whatsapp"
+            onSelect={onSelect}
+            icon={<SendHorizontal size={25} />}
+          />
+
+          <ShareOption
+            label="email"
+            type="email"
+            onSelect={onSelect}
+            icon={<Mail size={25} />}
+          />
+
+          <ShareOption
+            label="SMS"
+            type="sms"
+            onSelect={onSelect}
+            icon={<MessageSquare size={25} />}
+          />
+
+          <div className="col-start-2">
+            <ShareOption
+              label="Telegram"
+              type="telegram"
+              onSelect={onSelect}
+              icon={<Shield size={24} />}
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ShareOption({
+  label,
+  type,
+  icon,
+  onSelect,
+}: {
+  label: string;
+  type: string;
+  icon: React.ReactNode;
+  onSelect: (type: string) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(type)}
+      className="flex flex-col items-center gap-2 active:scale-95"
+    >
+      <span className="flex h-[48px] w-[48px] items-center justify-center rounded-[10px] bg-gradient-to-br from-[#d9edf0] to-[#35b66f] text-[#2c9d65] shadow-sm">
+        {icon}
+      </span>
+
+      <span className="text-[12px] font-medium text-[#35b66f]">{label}</span>
+    </button>
   );
 }
 

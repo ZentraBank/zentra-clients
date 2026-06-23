@@ -2,172 +2,162 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDownLeft, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
-const donationsFund = {
-  amount: "$100,000",
-  status: "Donation Received!",
-  sender: "Mark Parkersburg",
-  accountStatus: "Unverified!",
-  redemptionFee: "$700",
-  date: "Sun. July 03, 2025",
-  availableBalance: "$101,234.56",
-  time: "03:02 PM",
-  serviceCharge: "$121.95",
-  transactionId: "98234723948",
-  customerCare: "1-800-XXX-XXXX",
-  type: "InterBank",
-  authorizationCode: "009823",
-  countdown: {
-    days: "10",
-    hours: "07",
-    minutes: "00",
+const donationOptions = [
+  {
+    id: 1,
+    title: "Donations",
+    description:
+      "ZentraBank works with Philanthropists around the world, who are willing to make financial donation to help the poor and needy...",
+    gradient:
+      "bg-gradient-to-br from-[#D8E3F1] via-[#C8D8EC] to-[#E8F0F8]",
   },
-};
 
-export default function DonationsFundsPage() {
-  const handleRedeem = () => {
-    console.log("Redeem with OTP:", donationsFund);
-  };
+  {
+    id: 2,
+    title: "Insurance",
+    description:
+      "Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    gradient:
+      "bg-gradient-to-b from-[#3D6EF2] via-[#B5C8FF] to-[#F6F6F6]",
+  },
 
+  {
+    id: 3,
+    title: "Investing",
+    description:
+      "Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    gradient:
+      "bg-[linear-gradient(135deg,#1A8F4A_0%,#5DC77A_35%,#F8F8F8_65%,#0F8A3C_100%)]",
+  },
+
+  {
+    id: 4,
+    title: "Lending",
+    description:
+      "Dorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    gradient:
+      "bg-[linear-gradient(135deg,#D6E3F1_0%,#E9EFF7_45%,#CDEFD8_100%)]",
+  },
+];
+
+export default function DonationPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-white text-[#454545]">
-      <section className="relative mx-auto flex min-h-screen w-full max-w-[430px] flex-col px-5 pb-7 pt-12">
+  <main
+  className="min-h-screen overflow-hidden"
+  style={{
+    backgroundImage: "url('/images/donations-bg.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+      <section className="mx-auto w-full max-w-[430px] px-5 pb-10 pt-12">
+        {/* Header */}
         <header className="relative flex items-center justify-center">
-          <Link href="/donations-gift" className="absolute left-0 text-[#777]">
-            <ArrowLeft size={24} />
+          <Link href="/dashboard" className="absolute left-0">
+            <ArrowLeft
+              size={20}
+              className="text-[#2F2F2F] transition hover:opacity-70"
+            />
           </Link>
 
-          <h1 className="font-heading text-[14px] font-bold tracking-[0.13em]">
-            Donations Received
+          <h1 className="font-heading text-[14px] font-bold tracking-[0.08em] text-white">
+            Donation
           </h1>
         </header>
 
-        <div className="relative mt-5 flex flex-col items-center">
-          <div className="flex h-[168px] w-[168px] items-center justify-center rounded-full bg-[#ffe041] shadow-[0_7px_14px_rgba(0,0,0,0.16)]">
+        {/* Hero */}
+        <div className="mt-8 flex flex-col items-center">
+          <div
+            className="
+              relative
+              flex
+              h-[163px]
+              w-[192px]
+              items-center
+              justify-center
+              rounded-full
+             
+            "
+          >
             <Image
-              src="/images/gifts.png"
-              alt="Gift"
-              width={58}
-              height={58}
+              src="/images/donation-avatar.png"
+              alt="Donation Robot"
+              width={192}
+              height={163}
               priority
-              className="object-contain"
+              className="object-cover"
             />
           </div>
 
-          {/* <Image
-            src="/images/gifts-blur.png"
-            alt=""
-            width={150}
-            height={150}
-            className="pointer-events-none absolute -left-4 top-[230px] opacity-70 blur-[1px]"
-          />
-
-          <Image
-            src="/images/gifts-blur-2.png"
-            alt=""
-            width={121}
-            height={116}
-            className="pointer-events-none absolute -right-4 bottom-[-480px] opacity-70 blur-[1px]"
-          /> */}
-
-          <h2 className="mt-5 text-[35px] font-semibold tracking-[0.03em] text-[#5daa7e]">
-            {donationsFund.amount}
-          </h2>
-
-          <p className="mt-1 text-[13px] font-semibold text-[#1D4ED8]">
-            {donationsFund.status}
+          <p
+            className="
+              mt-8
+              max-w-[260px]
+              text-center
+              text-[15px]
+              leading-[20px]
+              text-white
+            "
+          >
+            Experience how amazing it is to make wealth from the goodwill of
+            your love ones, and helpers through our platform
           </p>
-
-          <div className="mt-8 flex items-center justify-center gap-4 text-[#222]">
-            <span className="text-[16px] font-black">
-              {donationsFund.countdown.days}
-            </span>
-            <span className="-ml-2 text-[13px]">Days</span>
-
-            <span className="text-[16px] font-black">
-              {donationsFund.countdown.hours}
-            </span>
-            <span className="-ml-2 text-[13px]">Hrs</span>
-
-            <span className="text-[16px] font-black">
-              {donationsFund.countdown.minutes}
-            </span>
-            <span className="-ml-2 text-[13px]">Min</span>
-          </div>
-
-          <div className="mt-5 text-center">
-            <p className="text-[13px] font-medium text-[#777]">
-              Incoming from{" "}
-              <ArrowDownLeft
-                size={14}
-                className="ml-2 inline-block text-[#168d5a]"
-              />
-            </p>
-
-            <p className="mt-1 text-[17px] font-bold text-[#555]">
-              {donationsFund.sender}
-            </p>
-          </div>
         </div>
 
-        <div className="mt-5 space-y-3">
-          <Detail
-            label="Current account status"
-            value={donationsFund.accountStatus}
-            valueClassName="font-bold text-[#1D4ED8]"
-          />
+        {/* Cards */}
+        <div className="mt-8 space-y-3">
+          {donationOptions.map((item) => (
+            <Link
+              key={item.id}
+              href={`/donation/${item.title.toLowerCase()}`}
+              className={`
+                block
+                rounded-[8px]
+                border
+                border-white/40
+                p-5
+                shadow-[0_0_12px_rgba(255,255,255,0.4)]
+                transition
+                hover:scale-[1.01]
+                ${item.gradient}
+              `}
+            >
+              <div className="flex flex-col items-center">
+                <div
+                  className="
+                    flex
+                    h-[56px]
+                    w-[56px]
+                    items-center
+                    justify-center
+                    rounded-[16px]
+                    border
+                    border-[#2E8B57]/40
+                  "
+                >
+                  <Image
+                    src="/images/donations-icon.png"
+                    alt={item.title}
+                    width={38}
+                    height={38}
+                  />
+                </div>
 
-          <Detail
-            label="Teir-2 Redemption fee"
-            value={donationsFund.redemptionFee}
-            valueClassName="font-bold text-[#d85b4f]"
-          />
+                <h2 className="mt-3 text-[22px] font-black text-[#1F1F1F]">
+                  {item.title}
+                </h2>
+              </div>
 
-          <Detail label="Transaction date" value={donationsFund.date} />
-          <Detail label="Available Balance" value={donationsFund.availableBalance} />
-          <Detail label="Transaction time" value={donationsFund.time} />
-          <Detail label="Service charge" value={donationsFund.serviceCharge} />
-          <Detail label="Transaction ID" value={donationsFund.transactionId} />
-          <Detail label="Customer Care" value={donationsFund.customerCare} />
-          <Detail label="Type" value={donationsFund.type} />
-          <Detail label="Authorization Code" value={donationsFund.authorizationCode} />
+              <p className="mt-3 text-[14px] leading-[18px] text-[#252525]">
+                {item.description}
+              </p>
+            </Link>
+          ))}
         </div>
-
-        <p className="mt-4 text-center text-[15px] font-medium text-[#555]">
-          You can redeem this Gift as fast as you can
-        </p>
-
-        <p className="mt-7 text-center text-[14px] font-black text-[#444]">
-          {donationsFund.redemptionFee}
-        </p>
-
-        <button
-          onClick={handleRedeem}
-          className="mt-2 h-[41px] w-full rounded-[10px] bg-[#1D4ED8] text-[16px] font-bold text-white shadow-md transition active:scale-[0.98]"
-        >
-          Redeem with OTP
-        </button>
       </section>
     </main>
-  );
-}
-
-function Detail({
-  label,
-  value,
-  valueClassName = "",
-}: {
-  label: string;
-  value: string;
-  valueClassName?: string;
-}) {
-  return (
-    <div className="flex items-start justify-between gap-5 text-[14px]">
-      <p className="shrink-0 text-[#777]">{label}</p>
-      <p className={`text-right font-medium text-[#444] ${valueClassName}`}>
-        {value}
-      </p>
-    </div>
   );
 }

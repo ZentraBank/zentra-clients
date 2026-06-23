@@ -32,19 +32,19 @@ const smallCards = [
   {
     id: 1,
     name: "Celebrity card",
-    type: "Credit card",
+    // type: "Credit card",
     image: "/images/celebrity-card.png",
   },
   {
     id: 2,
     name: "Merchant card",
-    type: "Debit card",
+    // type: "Debit card",
     image: "/images/merchant-card.png",
   },
   {
     id: 3,
     name: "Premium card",
-    type: "Credit card",
+    // type: "Credit card",
     image: "/images/celebrity-card.png",
   },
 ];
