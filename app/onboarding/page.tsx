@@ -25,29 +25,29 @@ export default function OnboardingPage() {
       {/* Mobile */}
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-between px-8 py-16 md:hidden">
         <div className="pt-4 text-center">
-          <h1 className="font-sf text-[37px] font-bold leading-[37px] text-white">
+          <h1 className="font-sf-condensed text-[48px] leading-[43px] text-white">
             1-Stop Online
             <br />
             Banking
           </h1>
         </div>
 
-        <div className="mb-8 w-full max-w-[320px] space-y-3">
+        <div className="mb-8 w-full max-w-[320px] space-y-3 flex-just">
           <Link
             href="/onboarding/step-2"
-            className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-[#2458E8] font-sf text-[15px] font-bold text-white shadow-lg"
+            className="mx-auto flex h-[36px] w-[273px] items-center justify-center gap-3 rounded-[12px] bg-[#1D4ED8] font-roboto text-[16px] text-white shadow-lg"
           >
             Next
-            <LogIn size={17} />
+            <LogIn size={14} />
           </Link>
 
           <Link
-            href="/login"
-            className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-white/35 font-sf text-[15px] font-bold text-[#2E8B57] backdrop-blur-sm"
+            href="/"
+            className="mx-auto flex h-[40px] w-[273px] items-center justify-center gap-3 rounded-[9px] bg-white/35 font-roboto text-[16px] text-[#1F1F1F] backdrop-blur-sm"
           >
-            <Sparkles size={16} strokeWidth={2.5} />
+            <Sparkles size={20} strokeWidth={2.5} />
             <span>Skip</span>
-            <LogIn size={17} />
+            <LogIn size={14} />
           </Link>
         </div>
       </section>

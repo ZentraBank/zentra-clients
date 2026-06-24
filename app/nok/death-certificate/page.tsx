@@ -10,7 +10,7 @@ import {
   ImageIcon,
 } from "lucide-react";
 
-type Step = "death" | "id" | "claim";
+type Step = "death" | "id" | "claim" | "success";
 
 type UploadedFile = {
   file: File;
@@ -107,7 +107,11 @@ export default function PodUploadPage() {
           />
         )}
 
-        {step === "claim" && <PodClaimFormStep />}
+        {step === "claim" && (
+  <PodClaimFormStep onSubmit={() => setStep("success")} />
+)}
+
+{step === "success" && <PodSuccessStep />}
       </section>
     </main>
   );
@@ -260,7 +264,7 @@ function ValidIdStep({
   );
 }
 
-function PodClaimFormStep() {
+function PodClaimFormStep({ onSubmit }: { onSubmit: () => void }) {
   const [form, setForm] = useState({
     deceasedName: "",
     dob: "",
@@ -510,7 +514,7 @@ function PodClaimFormStep() {
 
           <button
             type="button"
-            onClick={() => console.log("Claim form submitted", form)}
+            onClick={onSubmit}
             className="flex h-[38px] items-center justify-center rounded-[10px] bg-[#2458E8] text-[14px] font-bold text-white active:scale-[0.98]"
           >
             Submit
@@ -721,5 +725,41 @@ function CheckRow({
 
       <span>{label}</span>
     </button>
+  );
+}
+function PodSuccessStep() {
+  return (
+    <>
+      <div className="mt-8 flex flex-1 flex-col items-center">
+        <div className="flex h-[305px] w-[275px] items-center justify-center rounded-[80px] bg-white/25 shadow-[inset_0_0_35px_rgba(255,255,255,0.35)]">
+          <img
+            src="/images/pod-success.png"
+            alt="POD success"
+            className="h-[378px] w-[30p2x] object-contain"
+          />
+        </div>
+
+        <div className="mt-7 h-px w-[280px] bg-black/35" />
+
+        <div className="mt-6 max-w-[310px] space-y-4 text-center text-[14px] leading-[18px] text-[#666]">
+          <p>
+            You have successfully submitted your request for POD as next-of-kin.
+          </p>
+
+          <p>Kindly wait for our Bank Manager to attend to you.</p>
+
+          <p>Kindly be patient as, response take about 24hours.</p>
+        </div>
+      </div>
+
+      <div className="mt-auto rounded-[2px] border border-white bg-white/20 p-1">
+        <Link
+          href="/dashboard"
+          className="flex h-[57px] w-full items-center justify-center rounded-[9px] bg-[#2458E8] text-[14px] font-bold text-white"
+        >
+          Close
+        </Link>
+      </div>
+    </>
   );
 }

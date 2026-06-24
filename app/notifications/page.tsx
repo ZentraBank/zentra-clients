@@ -5,166 +5,193 @@ import {
   ArrowLeft,
   ChevronDown,
   Gift,
-  Info,
   ShieldCheck,
+  Info,
 } from "lucide-react";
+import BottomNav from "@/components/layout/BottomNav";
 
 const notifications = [
   {
-    id: 1,
-    type: "gift",
-    title: "Tier-1 funds redemption OTP",
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    action: "Redeem funds",
-  },
-  {
-    id: 2,
-    type: "gift",
+    type: "dropdown",
     title: "Charity Donation from Mark...",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
+    subtitle:
+      "Congratulations! You have just upgraded your ZentraBa...",
+    icon: "gift",
   },
+
   {
-    id: 3,
-    type: "gift",
+    type: "action",
+    title: "Transaction update",
+    subtitle:
+      "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    icon: "gift",
+  },
+
+  {
+    type: "action",
+    title: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    subtitle:
+      "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    icon: "gift",
+  },
+
+  {
+    type: "dropdown",
     title: "Up to $7m now convertible",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
+    subtitle:
+      "Congratulations! You have just upgraded your ZentraBa...",
+    icon: "info",
   },
+
   {
-    id: 4,
-    type: "security",
+    type: "action",
+    title: "Payable-on-Death (POD)",
+    subtitle:
+      "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    icon: "gift",
+  },
+
+  {
+    type: "action",
     title: "Security Alerts",
-    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    action: "Redeem funds",
+    subtitle:
+      "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    icon: "security",
   },
-  {
-    id: 5,
-    type: "info",
-    title: "Up to $7m now convertible",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
-  {
-    id: 6,
-    type: "gift",
-    title: "Charity Donation from Mark...",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
-  {
-    id: 7,
-    type: "info",
-    title: "Up to $7m now convertible",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
-  {
-    id: 8,
-    type: "info",
-    title: "Up to $7m now convertible",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
-  {
-    id: 9,
-    type: "info",
-    title: "Up to $7m now convertible",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
-  {
-    id: 10,
-    type: "gift",
-    title: "Charity Donation from Mark...",
-    description: "Congratulations! You have just upgraded your ZentraBa...",
-  },
+
+  ...Array.from({ length: 15 }).map((_, index) => ({
+    type: "dropdown",
+    title:
+      index % 2 === 0
+        ? "Up to $7m now convertible"
+        : "Charity Donation from Mark...",
+    subtitle:
+      "Congratulations! You have just upgraded your ZentraBa...",
+    icon: index % 2 === 0 ? "info" : "gift",
+  })),
 ];
 
-export default function NotificationPage() {
+export default function NotificationsPage() {
   return (
-    <main className="min-h-screen bg-[#23D84B] px-5 pb-8 pt-10 text-[#4a4a4a]">
-      <section className="mx-auto w-full max-w-[430px]">
-        <header className="relative flex items-center justify-center">
-          <Link href="/dashboard" className="absolute left-0 text-[#444]">
-            <ArrowLeft size={20} />
+    <main className="min-h-screen bg-[#E8EDF3] pb-[90px]">
+      <section className="mx-auto max-w-[390px] px-5 pt-11">
+        {/* Header */}
+        <header className="relative mb-4 flex items-center justify-center">
+          <Link
+            href="/dashboard"
+            className="absolute left-0 top-1/2 -translate-y-1/2"
+          >
+            <ArrowLeft size={20} className="text-[#666]" />
           </Link>
 
-          <h1 className="font-heading text-[13px] font-bold tracking-[0.08em] text-[#4a4a4a]">
+          <h1 className="text-[20px] font-semibold text-[#444]">
             Notification
           </h1>
         </header>
 
-        <div className="mt-6 space-y-3">
-          {notifications.map((item) => (
-            <NotificationCard key={item.id} item={item} />
-          ))}
+        {/* Notification List */}
+        <div className="space-y-3">
+          {notifications.map((item, index) =>
+            item.type === "action" ? (
+              <ActionNotification
+                key={index}
+                title={item.title}
+                subtitle={item.subtitle}
+                icon={item.icon}
+              />
+            ) : (
+              <DropdownNotification
+                key={index}
+                title={item.title}
+                subtitle={item.subtitle}
+                icon={item.icon}
+              />
+            )
+          )}
         </div>
       </section>
+
+      <BottomNav />
     </main>
   );
 }
 
-function NotificationCard({
-  item,
+function NotificationIcon({
+  type,
 }: {
-  item: {
-    id: number;
-    type: string;
-    title: string;
-    description: string;
-    action?: string;
-  };
+  type: string;
 }) {
-  const isLarge = Boolean(item.action);
+  if (type === "gift") {
+    return <Gift size={22} className="text-[#2962FF]" />;
+  }
 
+  if (type === "security") {
+    return <ShieldCheck size={22} className="text-[#2F9158]" />;
+  }
+
+  return <Info size={22} className="text-[#2F9158]" />;
+}
+
+function DropdownNotification({
+  title,
+  subtitle,
+  icon,
+}: {
+  title: string;
+  subtitle: string;
+  icon: string;
+}) {
   return (
-    <article
-      className={`rounded-[7px] shadow-sm ${
-        isLarge
-          ? "bg-white px-2 py-3"
-          : "bg-white/35 px-2 py-2 backdrop-blur-sm"
-      }`}
-    >
-      <div className="flex items-start gap-2">
-        <div className="mt-1 flex h-[24px] w-[24px] shrink-0 items-center justify-center">
-          {item.type === "gift" && (
-            <Gift size={22} className="text-[#2458E8]" />
-          )}
-
-          {item.type === "security" && (
-            <ShieldCheck size={22} className="text-[#1B9B5C]" />
-          )}
-
-          {item.type === "info" && (
-            <Info size={22} className="text-[#1B9B5C]" />
-          )}
-        </div>
+    <div className="rounded-xl border border-[#D6D9DE] bg-[#F3F5F8] px-3 py-2 shadow-sm">
+      <div className="flex items-center gap-3">
+        <NotificationIcon type={icon} />
 
         <div className="min-w-0 flex-1">
-          <h2
-            className={`truncate font-medium ${
-              isLarge ? "text-[15px]" : "text-[14px]"
-            }`}
-          >
-            {item.title}
-          </h2>
+          <h3 className="truncate text-[14px] font-medium text-[#444]">
+            {title}
+          </h3>
 
-          <p
-            className={`mt-1 leading-[13px] ${
-              isLarge ? "text-[12px]" : "text-[11px]"
-            }`}
-          >
-            {item.description}
+          <p className="truncate text-[12px] text-[#8A8A8A]">
+            {subtitle}
           </p>
         </div>
 
-        {item.action ? (
-          <button
-            type="button"
-            className="mt-7 flex h-[25px] w-[138px] shrink-0 items-center justify-center rounded-full bg-[#2458E8] text-[12px] font-bold text-white active:scale-95"
-          >
-            {item.action}
-          </button>
-        ) : (
-          <button type="button" className="mt-3 shrink-0 text-[#566]">
-            <ChevronDown size={17} />
-          </button>
-        )}
+        <ChevronDown size={18} className="text-[#777]" />
       </div>
-    </article>
+    </div>
+  );
+}
+
+function ActionNotification({
+  title,
+  subtitle,
+  icon,
+}: {
+  title: string;
+  subtitle: string;
+  icon: string;
+}) {
+  return (
+    <div className="rounded-xl border border-[#D6D9DE] bg-[#F3F5F8] px-3 py-3 shadow-sm">
+      <div className="flex gap-3">
+        <NotificationIcon type={icon} />
+
+        <div className="flex-1">
+          <h3 className="text-[14px] font-medium leading-tight text-[#444]">
+            {title}
+          </h3>
+
+          <div className="mt-3 flex items-center gap-3">
+            <p className="flex-1 text-[12px] leading-4 text-[#7C7C7C]">
+              {subtitle}
+            </p>
+
+            <button className="h-[34px] min-w-[150px] rounded-full bg-[#2852D8] px-5 text-[14px] font-medium text-white">
+              Take action
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

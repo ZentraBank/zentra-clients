@@ -23,7 +23,7 @@ export default function RegisterPage() {
           <X size={20} />
         </Link>
 
-        <h1 className="text-center font-sf text-[32px] font-bold leading-none text-[#555]">
+        <h1 className="text-center font-sf-condensed text-[36px]  text-[#555]">
           Sign up
         </h1>
 
@@ -33,14 +33,14 @@ export default function RegisterPage() {
               src="/images/register.png"
               alt="Signup illustration"
               width={150}
-              height={150}
+              height={112}
               className="object-contain"
               priority
             />
           </div>
         </div>
 
-        <p className="mt-4 font-lato text-[12px] leading-[15px] text-[#555]">
+        <p className="mt-4 font-lato text-[14px] leading-[15px] text-[#1f1f1f]">
           Register to experience amazing online banking features and secure
           account services.
         </p>
