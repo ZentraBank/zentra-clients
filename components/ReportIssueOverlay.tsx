@@ -1,30 +1,30 @@
 "use client";
 
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
-
-const helpItems = [
+const contactOptions = [
   {
-    title: "Report Failed Transaction",
-    href: "/support/help-center/report-failed-transaction",
+    title: "LIVE Chat (24/7)",
+    href: "/chat",
+    icon: "/images/live-chat.png",
   },
   {
-    title: "Report Unauthorized Transaction",
-    href: "/support/help-center/report-unauthorized-transaction",
+    title: "Call Support",
+    href: "tel:+441234567890",
+    icon: "/images/call-support.png",
   },
   {
-    title: "Dispute a Transaction",
-    href: "/support/help-center/card-issues",
+    title: "Email Support",
+    href: "mailto:support@example.com",
+    icon: "/images/email.png",
   },
-//   {
-//     title: "Security & fraud",
-//     href: "/support/help-center/security-fraud",
-//   },
-//   {
-//     title: "Fees & charges",
-//     href: "/support/help-center/fees-charges",
-//   },
+  {
+    title: "Request a call back",
+    href: "/support/callback",
+    icon: "/images/request-call.png",
+  },
 ];
 
 type ReportIssueOverlayProps = {
@@ -40,60 +40,40 @@ export default function ReportIssueOverlay({
 
   return (
     <div className="fixed inset-0 z-[999] flex items-start justify-center bg-black/20 px-5 pt-[218px] backdrop-blur-[1px]">
-      <section className="min-h-[296px] w-full max-w-[342px] rounded-[24px] bg-white px-4 pt-5 shadow-[0_4px_10px_rgba(0,0,0,0.28)]">
-        <header className="relative flex h-8 items-center justify-center">
+      <section className="min-h-[326px] w-full max-w-[342px] rounded-[24px] bg-white px-4 pt-5 shadow-[0_4px_10px_rgba(0,0,0,0.22)]">
+        <header className="relative flex items-center justify-center">
           <button title="Close"
             type="button"
             onClick={onClose}
             className="absolute left-0 flex h-8 w-8 items-center justify-center"
           >
-            <ArrowLeft size={20} className="text-[#60646b]" />
+            <ArrowLeft size={24} className="text-[#4f5358]" />
           </button>
 
-          <h2 className="font-heading text-[13px] font-black tracking-[0.03em] text-black">
-            Report an Issue
-          </h2>
+          <h1 className="font-heading text-[13px] font-black tracking-[0.03em] text-black">
+            Contact Support
+          </h1>
         </header>
 
-        <div className="mt-9 overflow-hidden rounded-[10px] bg-[#d8dde2] p-2">
-          <button
-            type="button"
-            className="flex h-[32px] w-full items-center justify-between rounded-[8px] bg-white px-3 text-left"
-          >
-            <span className="text-[13px] font-bold text-black">
-              Report an Issue
-            </span>
-            <ChevronDown size={17} className="rotate-180 text-[#3f444a]" />
-          </button>
-
-          <div className="mt-2 space-y-[6px] px-2 pb-1">
-            {helpItems.map((item) => (
+        <div className="mt-9 space-y-[10px] font-roboto">
+          {contactOptions.map((item) => (
             <Link
-                key={item.title}
-                href={item.href}
-                onClick={onClose}
-                className="
-                flex
-                h-[22px]
-                w-full
-                items-center
-                rounded-[6px]
-                bg-white
-                px-4
-                text-left
-                text-[12px]
-                font-semibold
-                text-[#4b4f56]
-                shadow-[0_1px_3px_rgba(0,0,0,0.08)]
-                transition-all
-                hover:bg-[#f5f7fa]
-                hover:text-[#2865f2]
-                "
+              key={item.title}
+              href={item.href}
+              onClick={onClose}
+              className="relative flex h-[33px] items-center justify-center rounded-[10px] border border-[#eef0f4] bg-white text-[14px] font-semibold text-[#5a5a5a] shadow-[0_1px_4px_rgba(0,0,0,0.08)]"
             >
-                {item.title}
+              <Image
+                src={item.icon}
+                alt={item.title}
+                width={24}
+                height={24}
+                className="absolute left-[17px] object-contain"
+              />
+
+              <span>{item.title}</span>
             </Link>
-            ))}
-          </div>
+          ))}
         </div>
       </section>
     </div>

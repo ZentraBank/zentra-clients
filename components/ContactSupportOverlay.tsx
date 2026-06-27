@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 
 const contactOptions = [
   {
-    title: "LIVE Chat (24/7)",
+    title: "LIVE Chat (24/)",
     href: "/chat",
     icon: "/images/live-chat.png",
   },
@@ -55,7 +55,7 @@ export default function CustomerSupportOverlay({
           </h1>
         </header>
 
-        <div className="mt-9 space-y-[10px]">
+        <div className="mt-9 space-y-[10px] font-roboto">
           {contactOptions.map((item) => (
             <Link
               key={item.title}

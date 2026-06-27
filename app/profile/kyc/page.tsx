@@ -196,20 +196,20 @@ export default function ProfileSettingsPage() {
 
   return (
     <main className="min-h-screen bg-[#E7EBF0] px-2 pb-10 text-[#555]">
-      <section className="mx-auto max-w-[430px] pt-10">
+      <section className="mx-auto pt-10">
         <header className="relative mb-4 flex items-center justify-center">
           <Link href="/profile" className="absolute left-4">
-            <ArrowLeft size={20} />
+            <ArrowLeft size={24} />
           </Link>
 
-          <h1 className="text-[13px] font-bold tracking-[0.12em]">
+          <h1 className="text-[14px] font-sf-condensed font-bold tracking-[0.12em]">
             Profile settings page
           </h1>
         </header>
 
-        <section className="rounded-[14px] border border-[#6fb985] bg-[#eef3f8] px-2 pb-5 pt-4 shadow-sm">
-          <div className="grid grid-cols-[130px_1fr] items-center gap-2">
-            <div className="relative h-[135px]">
+        <section className="rounded-[16px] border border-[#15803D] bg-[#E7EBF0] px-2 pb-5 pt-4 shadow-sm">
+          <div className="grid grid-cols-2 h-[161px]  items-center gap-2">
+            <div className="relative h-[135px] w-[142px]">
               <Image
                 src="/images/kyc.png"
                 alt="KYC illustration"
@@ -220,10 +220,10 @@ export default function ProfileSettingsPage() {
             </div>
 
             <div>
-              <h2 className="text-[22px] font-black leading-tight text-[#657bb7]">
+              <h2 className="text-[24px] font-sf-condensed leading-tight font-semibold text-[#1E3A8A]">
                 Complete Your KYC
               </h2>
-              <p className="mt-4 text-center text-[13px] font-semibold leading-[15px] text-[#666]">
+              <p className="mt-4 text-center text-[13px] font-semibold font-lato leading-[14px] text-[#666]">
                 Completing your KYC is the only assured way of enjoying almost
                 all our Banking features
               </p>
@@ -238,7 +238,7 @@ export default function ProfileSettingsPage() {
 
           {openAccordion === "personal" && (
             <Card>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 font-sf-condensed text-[14px] text-[#1f1f1f]/80 rounded-[4px]">
                 <Input
                   label="First name"
                   value={form.firstName}
@@ -340,14 +340,14 @@ export default function ProfileSettingsPage() {
               </Card>
 
               <Card>
-                <h3 className="text-[12px] font-bold tracking-wide">
+                <h3 className="text-[14px] font-bold tracking-wide text-[#1f1f1f]/60">
                   Upload ID Document
                 </h3>
 
                 <input
                   ref={fileRef}
                   type="file"
-                  accept="image/*,.pdf"
+                  accept="image/*,.pdf,.png,.jpg,.jpeg,.doc,.docx"
                   hidden
                   onChange={(e) => handleUpload(e.target.files?.[0])}
                 />
@@ -368,13 +368,14 @@ export default function ProfileSettingsPage() {
                   </p>
                 )}
 
-                <p className="mx-auto mt-3 max-w-[260px] text-center text-[11px] leading-[13px] text-[#b0b0b0]">
+                <p className="mx-auto mt-3 max-w-[260px] text-center text-[12px] leading-[13px] text-[#1f1f1f]/30">
                   You may have to do a Selfie/Live Photo for identity
                   verification
                 </p>
               </Card>
             </>
           )}
+          
 
           <AccordionTitle
             title="Contact information:"
@@ -480,17 +481,17 @@ export default function ProfileSettingsPage() {
             </Card>
           )}
 
-          <section className="mt-3 flex h-[92px] overflow-hidden bg-[#e8f7f1]">
-            <div className="w-[47%] px-5 py-2">
-              <h2 className="text-[23px] font-black leading-[26px] text-[#555]">
+          <section className="mt-3 flex h-[92px] overflow-hidden bg-white">
+            <div className="w-[47%] px-5 py-2 justify-center">
+              <h2 className="text-[18px] font-sf-condensed font-bold leading-[26px] text-[#555]">
                 Glowing
                 <br />
                 <span className="pl-10">Season</span>
               </h2>
-              <p className="mt-2 text-[11px]">Offers that never fail!</p>
+              <p className="mt-2 text-[9px] font-sf-pro text-[#1f1f1f]/60">Offers that never fail!</p>
             </div>
 
-            <div className="relative flex-1 rounded-tl-full bg-[#d7e6f5]">
+            <div className="relative flex-1 rounded-tl-full bg-white">
               <Image
                 src="/images/glowing-season.png"
                 alt="Promo illustration"
@@ -611,7 +612,7 @@ export default function ProfileSettingsPage() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="mt-5 flex h-[43px] w-full items-center justify-center gap-2 rounded-xl bg-[#2563eb] text-sm font-bold text-white disabled:opacity-60"
+            className="mt-5 flex h-[43px] w-full items-center justify-center gap-2 rounded-[12px] bg-[#1D4ED8] text-sm font-bold text-white disabled:opacity-60"
           >
             {saving ? (
               <Loader2 size={17} className="animate-spin" />

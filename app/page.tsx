@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, Grid2X2, ChevronDown } from "lucide-react";
 import RegisterOverlay from "@/components/auth/RegisterOverlay";
+import AuthOverlay from "@/components/auth/AuthOverlay";
 
 const features = [
   { title: "Loan", image: "/images/loan.png", icon: "/icons/loan.png" },
@@ -37,10 +38,12 @@ const faqs = [
 
 export default function WelcomePage() {
   const [showRegister, setShowRegister] = useState(false);
-
+  const [showAuth, setShowAuth] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+const [authMode, setAuthMode] = useState<"register" | "login">("register");
   return (
     <>
-      <main className="min-h-screen bg-[#E8EEF3] text-[#1F1F1F]">
+      <main className="min-h-screen bg-[#E7EBF0] text-[#1F1F1F]/80">
         <header className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5">
           <Image
             src="/images/logo.png"
@@ -51,13 +54,16 @@ export default function WelcomePage() {
           />
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="flex items-center gap-2 rounded-xl bg-white/80 px-5 py-2 text-sm font-semibold shadow-sm"
-            >
-              Login <ArrowRight size={17} className="text-[#2E8B57]" />
-            </Link>
-
+            <button
+  type="button"
+  onClick={() => {
+    setAuthMode("login");
+    setAuthOpen(true);
+  }}
+  className="flex items-center gap-2 rounded-xl bg-[#E7EBF0] px-5 py-2 text-sm font-semibold shadow-sm"
+>
+  Login <ArrowRight size={17} className="text-[#2E8B57]" />
+</button>
             <button className="grid h-11 w-11 place-items-center rounded-full bg-white/70 shadow-sm">
               <Grid2X2 className="text-[#2E8B57]" size={24} />
             </button>
@@ -75,35 +81,51 @@ export default function WelcomePage() {
             />
 
             <div className="relative z-10 flex min-h-[455px] flex-col items-center justify-center px-5 py-16 text-center lg:min-h-[560px]">
-              <h1 className="max-w-4xl text-[34px] font-black leading-[34px] text-white drop-shadow-[2px_3px_0_#111] md:text-6xl md:leading-[64px]">
-                Welcome to the ONE-
-                <br />
-                STOP Banking
-                <br />
-                Network in USA
-              </h1>
-
-              <p className="mt-8 max-w-xl text-sm font-semibold drop-shadow md:text-lg">
+              <h1
+              className="
+                max-w-4xl
+                text-center
+                font-bold
+                font-sf-condensed
+                uppercase
+                leading-[30px]
+                text-[#1f1f1f]/80
+                text-[24px]
+                md:text-6xl
+                md:leading-[64px]
+                [text-shadow:_-2px_-2px_0_#ffffff,_2px_-2px_0_#ffffff,_-2px_2px_0_#ffffff,_2px_2px_0_#ffffff,_4px_4px_0_#ffffff]
+              "
+            >
+              Welcome to the ONE-
+              <br />
+              STOP Banking
+              <br />
+              Network in USA
+            </h1>
+              <p className="mt-8 max-w-xl text-[14px] font-semibold drop-shadow md:text-lg font-lato">
                 Zentrabank Gateway is the best thing that can happen to you
               </p>
 
               <button
-                type="button"
-                onClick={() => setShowRegister(true)}
-                className="mt-14 rounded-xl bg-[#2458E8] px-12 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#1d4ed8]"
-              >
-                Create account
-              </button>
+  type="button"
+  onClick={() => {
+    setAuthMode("register");
+    setAuthOpen(true);
+  }}
+  className="mt-14 rounded-[12px] bg-[#1D4ED8] w-[200px] h-[35px] px-12  text-[12px] font-bold text-white shadow-lg"
+>
+  Create account
+</button>
             </div>
           </div>
         </section>
 
         <section className="mx-auto mt-8 max-w-7xl px-5 lg:px-8">
-          <div className="mb-5 flex justify-center">
-            <span className="rounded-full bg-white px-8 py-1 text-xs">
-              What is ZentraBank?
-            </span>
-          </div>
+          <div className="mb-5 flex -mt-6">
+          <span className="ml-auto rounded-[12px] w-[162px] h-[16px] bg-white/30 px-8 text-[10px] font-lato">
+            What is ZentraBank?
+          </span>
+        </div>
 
           <div className="grid grid-cols-3 gap-4 md:grid-cols-6 lg:gap-6">
             {features.map((item) => (
@@ -129,8 +151,8 @@ export default function WelcomePage() {
             ))}
           </div>
 
-          <div className="mt-5 flex items-center justify-between gap-4 md:justify-center md:gap-10">
-            <p className="max-w-[210px] text-sm font-bold leading-5 text-[#444] md:max-w-lg md:text-base">
+          <div className="mt-5 flex items-center justify-between gap-4 md:justify-center md:gap-10 h-[40px] bg-[#1f1f1f]/80">
+            <p className="max-w-[345px]  text-sm font-bold leading-5 text-[#444] md:max-w-lg md:text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
 
@@ -140,7 +162,7 @@ export default function WelcomePage() {
           </div>
         </section>
 
-        <section className="mt-10 bg-[#2458E8] px-5 py-8 text-white">
+        <section className="mt-10 bg-[#ffffff] px-5 py-8 text-white">
           <div className="mx-auto max-w-7xl">
             <h2 className="mb-5 text-center text-lg font-bold tracking-widest text-black/70">
               About ZentraBank
@@ -208,7 +230,7 @@ export default function WelcomePage() {
                 placeholder="Enter email"
                 className="flex-1 bg-transparent px-3 text-sm outline-none"
               />
-              <button className="rounded-full bg-[#2458E8] px-7 py-2 text-sm font-semibold text-white">
+              <button className="rounded-full bg-[#ffffff] px-7 py-2 text-sm font-semibold text-white">
                 Subscribe
               </button>
             </div>
@@ -252,10 +274,11 @@ export default function WelcomePage() {
         </footer>
       </main>
 
-      <RegisterOverlay
-        open={showRegister}
-        onClose={() => setShowRegister(false)}
-      />
+      <AuthOverlay
+  open={authOpen}
+  mode={authMode}
+  onClose={() => setAuthOpen(false)}
+/>
     </>
   );
 }

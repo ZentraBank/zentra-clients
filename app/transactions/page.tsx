@@ -20,36 +20,37 @@ const transactions = [
 
 export default function TransactionHistoryPage() {
   return (
-    <main className="min-h-screen bg-[#E8EDF3] pb-[92px] text-[#333]">
-      <section className="mx-auto max-w-[390px] px-4 pt-11">
-        <div className="relative border-[3px] border-[#1594FF] bg-[#E8EDF3]">
-          <header className="relative flex h-7 items-center justify-center border-b-[2px] border-dotted border-[#1594FF]">
-            <Link href="/dashboard" className="absolute left-2 top-1/2 -translate-y-1/2">
-              <ArrowLeft size={18} />
-            </Link>
+    <main className="min-h-screen bg-[#E7EBF0] pb-[92px] text-[#1f1f1f]/80">
+  <section className="mx-auto max-w-[390px] px-4 pt-11">
+    <header className="relative mb-5 flex h-8 items-center justify-center">
+      <Link
+        href="/dashboard"
+        className="absolute left-0 top-1/2 -translate-y-1/2"
+      >
+        <ArrowLeft size={22} />
+      </Link>
 
-            <h1 className="text-[13px] font-bold tracking-wide">
-              Transaction History
-            </h1>
-          </header>
+      <h1 className="font-sf text-[14px] font-bold font-sf-condensed text-[#1f1f1f]/80">
+        Transaction History
+      </h1>
+    </header>
 
-          <div>
-            {transactions.map((tx, index) => (
-              <TransactionRow
-                key={index}
-                type={tx.type as "in" | "out"}
-                name={tx.name}
-                text={tx.text}
-                bank={tx.bank}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="space-y-3">
+      {transactions.map((tx, index) => (
+        <TransactionRow
+          key={index}
+          type={tx.type as "in" | "out"}
+          name={tx.name}
+          text={tx.text}
+          bank={tx.bank}
+        />
+      ))}
+    </div>
+  </section>
 
-      <BottomNav />
-    </main>
-  );
+  <BottomNav />
+</main>
+);
 }
 
 function TransactionRow({
@@ -66,25 +67,34 @@ function TransactionRow({
   const isIn = type === "in";
 
   return (
-    <article className="flex min-h-[52px] items-center justify-between border-b-[2px] border-dotted border-[#1594FF] px-3 py-2">
+    <article className="flex min-h-[52px] items-center justify-between rounded-[8px] bg-[#ffffff]/30 px-3 py-2 shadow-[0_1px_4px_rgba(0,0,0,0.18)]">
       <div className="flex min-w-0 items-center gap-3">
-        {isIn ? (
-          <ArrowDownLeft size={18} className="shrink-0 text-[#2F9158]" />
-        ) : (
-          <ArrowUpRight size={18} className="shrink-0 text-[#E0443E]" />
-        )}
+        <div
+          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${
+            isIn ? "bg-[#DFF3E8]" : "bg-[#FBE3E3]"
+          }`}
+        >
+          {isIn ? (
+            <ArrowDownLeft size={14} className="text-[#2F9158]" />
+          ) : (
+            <ArrowUpRight size={14} className="text-[#E0443E]" />
+          )}
+        </div>
 
         <div className="min-w-0">
-          <p className="truncate text-[11px] text-black/30">
+          <p className="truncate text-[11px] font-medium text-black/30 font-lato">
             {name} {text}
           </p>
-          <h3 className="text-[13px] leading-tight text-black/55">{bank}</h3>
+
+          <h3 className="truncate text-[14px] leading-tight text-black/60 font-lato">
+            {bank}
+          </h3>
         </div>
       </div>
 
       <p
-        className={`ml-2 shrink-0 text-[15px] font-semibold ${
-          isIn ? "text-[#2F9158]" : "text-[#E0443E]"
+        className={`ml-2 shrink-0 text-[15px] font-semibold font-sf ${
+          isIn ? "text-[#2E8B57]" : "text-[#C0392B]/80"
         }`}
       >
         -₦5,000,...

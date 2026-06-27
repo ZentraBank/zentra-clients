@@ -19,7 +19,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
 
   return (
     <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 px-4 py-6">
-      <section className="relative max-h-[95vh] w-full max-w-[360px] overflow-y-auto rounded-[18px] bg-white px-4 pb-6 pt-5 shadow-xl md:max-w-[430px] md:px-6">
+      <section className="relative max-h-[706px] w-full max-w-[360px] overflow-y-auto rounded-[18px] bg-white px-4 pb-6 pt-5 shadow-xl md:max-w-[430px] md:px-6">
         <button
           type="button"
           onClick={onClose}
@@ -29,7 +29,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
           <X size={20} />
         </button>
 
-        <h1 className="text-center font-sf-condensed text-[36px] text-[#555]">
+        <h1 className="text-center font-sf-condensed text-[36px] text-[#1f1f1f]/60">
           Sign up
         </h1>
 
@@ -46,7 +46,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
           </div>
         </div>
 
-        <p className="mt-4 font-lato text-[14px] leading-[15px] text-[#1f1f1f]">
+        <p className="mt-4 font-lato-medium text-[13px] leading-[15px] text-[#1f1f1f]/80  text-align-center">
           Register to experience amazing online banking features and secure
           account services.
         </p>
@@ -55,8 +55,9 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
           <div className="grid h-[34px] grid-cols-2 overflow-hidden rounded-[10px] border border-[#2458E8] bg-[#EEF4FF]">
             <button
               type="button"
+              
               onClick={() => setMethod("email")}
-              className={`font-sf text-[12px] font-bold transition ${
+              className={`font-sf-condensed text-[14px] transition ${
                 method === "email" ? "bg-white text-[#555]" : "text-[#777]"
               }`}
             >
@@ -66,7 +67,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
             <button
               type="button"
               onClick={() => setMethod("phone")}
-              className={`font-sf text-[12px] font-bold transition ${
+              className={`font-sf-condensed text-[14px] font-bold transition ${
                 method === "phone" ? "bg-white text-[#555]" : "text-[#777]"
               }`}
             >
@@ -101,7 +102,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
           )}
 
           <div>
-            <label className="font-lato text-[11px] font-bold text-[#555]">
+            <label className="font-sf-condensed text-[12px] font-bold text-[#1f1f1f]/80">
               Create Password:
             </label>
 
@@ -119,7 +120,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
           </div>
 
           <div>
-            <label className="font-lato text-[11px] font-bold text-[#555]">
+            <label className="font-sf-condensed text-[12px] font-bold text-[#1f1f1f]/80">
               Confirm Password:
             </label>
 
@@ -138,7 +139,7 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
 
           <Link
             href="/register/otp"
-            className="mt-7 block w-full rounded-[10px] bg-[#2458E8] py-3 text-center font-sf text-[13px] font-semibold text-white shadow-lg"
+            className="mt-7 block w-full rounded-[10px] bg-[#1D4ED8] py-3 text-center font-roboto text-[13px] font-semibold text-white shadow-lg"
           >
             Sign up
           </Link>
@@ -151,15 +152,15 @@ export default function RegisterOverlay({ open, onClose }: RegisterOverlayProps)
         </p>
 
         <div className="mt-3 flex justify-center gap-5 rounded-[8px] border border-dashed border-purple-400 py-2">
-          <button type="button" className="transition hover:scale-110">
+          <button title="Sign up with Facebook" type="button" className="transition hover:scale-110">
             <Image src="/images/facebook.png" alt="Facebook" width={34} height={34} />
           </button>
 
-          <button type="button" className="transition hover:scale-110">
+          <button title="Sign up with Instagram" type="button" className="transition hover:scale-110">
             <Image src="/images/instagram.png" alt="Instagram" width={34} height={34} />
           </button>
 
-          <button type="button" className="transition hover:scale-110">
+          <button title="sign up with google" type="button" className="transition hover:scale-110">
             <Image src="/images/google.png" alt="Google" width={34} height={34} />
           </button>
         </div>

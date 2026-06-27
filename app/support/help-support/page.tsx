@@ -9,13 +9,12 @@ import ReportIssueOverlay from "@/components/ReportIssueOverlay";
 import TicketCaseTrackingOverlay from "@/components/TicketCaseTrackingOverlay";
 import CustomerSupportOverlay from "@/components/ContactSupportOverlay";
 
-
 const supportLinks = [
-  { title: "Contact Support", href: "", type: "overlay" },
-  { title: "Help Center", href: "", type: "overlay" },
-  { title: "Report an Issue", href: "", type: "overlay" },
-  { title: "Ticket / Case\nTracking", href: "", type: "overlay" },
-];
+  { title: "Contact Support", overlay: "contact" },
+  { title: "Help Center", overlay: "help" },
+  { title: "Report an Issue", overlay: "report" },
+  { title: "Ticket / Case\nTracking", overlay: "ticket" },
+] as const;
 
 const faqItems = [
   {
@@ -42,13 +41,13 @@ const faqItems = [
 
 export default function HelpSupportPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [showHelpCenter, setShowHelpCenter] = useState(false);
+  const [activeOverlay, setActiveOverlay] = useState<
+    "contact" | "help" | "report" | "ticket" | null
+  >(null);
 
   return (
-    <main className="relative min-h-screen bg-[#e9eef4] px-4 pb-10 pt-10 text-[#252525]">
-      <div
-        className={`mx-auto max-w-[430px] transition-opacity duration-200 `}
-      >
+    <main className="relative min-h-screen bg-[#E7EBF0] px-4 pb-10 pt-10 font-sf-condensed text-[#1f1f1f]/80">
+      <div className="mx-auto max-w-[430px]">
         <header className="flex items-center justify-between">
           <Link
             href="/dashboard"
@@ -57,7 +56,7 @@ export default function HelpSupportPage() {
             <ArrowLeft size={24} className="text-[#5b5f66]" />
           </Link>
 
-          <h1 className="font-heading text-[13px] font-black tracking-[0.04em] text-[#5d5d5d]">
+          <h1 className="font-sf-condensed text-[13px] font-black tracking-[0.04em] text-[#5d5d5d]">
             Help/Support
           </h1>
 
@@ -72,7 +71,7 @@ export default function HelpSupportPage() {
           </div>
         </header>
 
-        <div className="relative mx-auto mt-8 h-[180px] w-[260px]">
+        <div className="relative mx-auto mt-8 h-[189px] w-[230px]">
           <Image
             src="/images/profile-setting-2.png"
             alt="Settings support"
@@ -83,43 +82,30 @@ export default function HelpSupportPage() {
         </div>
 
         <section className="mt-6">
-          <h2 className="text-[12px] font-black text-black">Support Links</h2>
+          <h2 className="font-sf-condensed text-[14px] font-black text-black/95">
+            Support Links
+          </h2>
 
           <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-4">
-            {supportLinks.map((item) => {
-              const content = item.title.split("\n").map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ));
-
-              const className =
-                "flex h-[36px] items-center justify-center rounded-[10px] bg-white/55 px-3 text-center text-[14px] font-semibold leading-[16px] text-[#55585f] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]";
-
-              if (item.type === "overlay") {
-                return (
-                  <button
-                    key={item.title}
-                    type="button"
-                    onClick={() => setShowHelpCenter(true)}
-                    className={className}
-                  >
-                    {content}
-                  </button>
-                );
-              }
-
-              return (
-                <Link key={item.title} href={item.href} className={className}>
-                  {content}
-                </Link>
-              );
-            })}
+            {supportLinks.map((item) => (
+              <button
+                key={item.title}
+                type="button"
+                onClick={() => setActiveOverlay(item.overlay)}
+                className="flex h-[43px] w-full items-center justify-center rounded-[12px] bg-white/30 px-3 text-center font-roboto text-[14px] font-semibold leading-[16px] text-[#55585f] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
+              >
+                {item.title.split("\n").map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </button>
+            ))}
           </div>
         </section>
 
-        <section className="mt-4 rounded-t-[10px] rounded-b-[18px] bg-[#2865f2] px-2 pb-3 pt-2">
-          <h2 className="text-[12px] font-black text-black">
+        <section className="mt-4 w-full rounded-b-[12px] rounded-t-[10px] bg-[#2563EB] px-2 pb-3 pt-2">
+          <h2 className="font-sf-condensed text-[12px] text-black/95">
             Frequently Asked Questions
           </h2>
 
@@ -143,14 +129,14 @@ export default function HelpSupportPage() {
               return (
                 <div
                   key={item.title}
-                  className="overflow-hidden rounded-[9px] bg-white shadow-sm"
+                  className="overflow-hidden rounded-[9px] bg-white font-roboto shadow-sm"
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : index)}
                     className="flex h-[36px] w-full items-center justify-between px-4 text-left"
                   >
-                    <span className="text-[13px] font-medium text-[#3f434a]">
+                    <span className="font-roboto text-[13px] font-medium text-[#3f434a]">
                       {item.title}
                     </span>
 
@@ -180,25 +166,25 @@ export default function HelpSupportPage() {
         </section>
       </div>
 
-      <HelpCenterOverlay
+      <CustomerSupportOverlay
+        open={activeOverlay === "contact"}
+        onClose={() => setActiveOverlay(null)}
+      />
 
-        open={showHelpCenter}
-        onClose={() => setShowHelpCenter(false)}
+      <HelpCenterOverlay
+        open={activeOverlay === "help"}
+        onClose={() => setActiveOverlay(null)}
       />
 
       <ReportIssueOverlay
-        open={showHelpCenter}
-        onClose={() => setShowHelpCenter(false)}
+        open={activeOverlay === "report"}
+        onClose={() => setActiveOverlay(null)}
       />
+
       <TicketCaseTrackingOverlay
-        open={showHelpCenter}
-        onClose={() => setShowHelpCenter(false)}
+        open={activeOverlay === "ticket"}
+        onClose={() => setActiveOverlay(null)}
       />
-      <CustomerSupportOverlay
-        open={showHelpCenter}
-        onClose={() => setShowHelpCenter(false)}
-      />
-    
     </main>
   );
 }

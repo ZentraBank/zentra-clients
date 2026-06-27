@@ -47,19 +47,19 @@ export default function SettingsSupportPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#E7EBF0] px-5 pb-10 text-[#4f4f4f]">
+    <main className="min-h-screen bg-[#E7EBF0] px-5 pb-10 text-[#1f1f1f]/80">
       <section className="mx-auto max-w-[430px] pt-10">
         <header className="relative flex items-center justify-center">
           <Link href="/profile" className="absolute left-0">
-            <ArrowLeft size={20} />
+            <ArrowLeft size={24} />
           </Link>
 
-          <h1 className="text-[14px] font-black tracking-wide">
+          <h1 className="text-[14px] font-sf-condensed tracking-wide">
             Settings & Support
           </h1>
         </header>
 
-    <div className="relative mx-auto mt-8 h-[180px] w-[260px]">
+    <div className="relative mx-auto mt-8 h-[189px] w-[230px]">
     <Image
         src="/images/profile-setting-2.png"
         alt="Settings support"
@@ -69,7 +69,7 @@ export default function SettingsSupportPage() {
     />
     </div>
 
-        <section className="mx-auto mt-7 max-w-[320px] space-y-2">
+        <section className="mx-auto mt-7 max-w-[294px] space-y-2 rounded-[12px] font-roboto text-[#1f1f1f]/80">
           <MenuLink href="/profile/settings" title="Edit Profile" />
           <MenuLink href="/verify-human" title="Confirm you’re not a robot" />
           <MenuLink href="/change-password" title="Change Password" />
@@ -79,7 +79,7 @@ export default function SettingsSupportPage() {
           />
         </section>
 
-        <section className="mx-auto mt-5 max-w-[320px] rounded-[8px] bg-[#2563eb] p-[7px]">
+        <section className="mx-auto mt-5 max-w-[294px] rounded-[12px] bg-[#2563EB] p-[7px] text-[#1f1f1f]/80">
           <ToggleRow
             label="Freeze account (temporary lock)"
             checked={freezeAccount}
@@ -100,7 +100,7 @@ export default function SettingsSupportPage() {
           />
         </section>
 
-        <section className="mx-auto mt-5 max-w-[320px] rounded-[8px] bg-[#2563eb] p-[7px]">
+        <section className="mx-auto mt-5 max-w-[294px] rounded-[12px] bg-[#2563eb] p-[7px] text-[#1f1f1f]/80">
           <DropdownGroup
             title="Choose Language"
             open={languageOpen}

@@ -46,7 +46,7 @@ export default function LegalCompliancePage() {
   const [openItem, setOpenItem] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#e9eef4] px-5 pt-10 text-[#252525]">
+    <main className="min-h-screen bg-[#E7EBF0] px-5 pt-10 text-[1f1f1f]/80 font-roboto">
       <div className="mx-auto max-w-[430px]">
         {/* Header */}
         <header className="relative flex h-8 items-center justify-center">
@@ -54,7 +54,7 @@ export default function LegalCompliancePage() {
             href="/help-support"
             className="absolute left-0 flex h-8 w-8 items-center justify-center"
           >
-            <ArrowLeft size={21} className="text-[#5b5f66]" />
+            <ArrowLeft size={24} className="text-[#1f1f1f]/80" />
           </Link>
 
           <h1 className="font-heading text-[13px] font-black tracking-[0.04em] text-[#333333]">
@@ -70,12 +70,12 @@ export default function LegalCompliancePage() {
     return (
       <div
         key={item.title}
-        className="overflow-hidden rounded-[9px] bg-[#d8dde2]"
+        className="overflow-hidden rounded-[12px] bg-white"
       >
         <button
           type="button"
           onClick={() => setOpenItem(isOpen ? null : index)}
-          className="flex h-[35px] w-full items-center justify-between rounded-[9px] bg-white px-4 text-left"
+          className="flex h-[35px] w-full items-center justify-between rounded-[12px] bg-white px-4 text-left"
         >
           <span className="text-[13px] font-semibold text-[#3f434a]">
             {item.title}

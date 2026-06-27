@@ -31,10 +31,10 @@ export default function PodRedemptionPage() {
       <section className="mx-auto w-full max-w-[430px]">
         <header className="relative flex items-center justify-center">
           <Link href="/dashboard" className="absolute left-0 text-[#555]">
-            <ArrowLeft size={20} />
+            <ArrowLeft size={24} />
           </Link>
 
-          <h1 className="font-heading text-[13px] font-black tracking-[0.08em]">
+          <h1 className="font-heading text-[14px] font-bold font-sf-condensed tracking-[0.08em] text-[#1f1f1f]/80">
             POD Redemption
           </h1>
         </header>
@@ -43,8 +43,8 @@ export default function PodRedemptionPage() {
           <Image
             src="/images/pod-phone.png"
             alt="POD redemption"
-            width={130}
-            height={90}
+            width={150}
+            height={150}
             priority
             className="object-contain"
           />
@@ -68,7 +68,7 @@ export default function PodRedemptionPage() {
                   src={item.image}
                   alt={item.title}
                   width={item.card ? 120 : 115}
-                  height={item.card ? 95 : 105}
+                  height={item.card ? 120 : 105}
                   className="object-contain"
                 />
                 
@@ -79,18 +79,20 @@ export default function PodRedemptionPage() {
           ))}
         </div>
         <div className="mt-10 rounded-[6px] border border-[#D8DEE8] bg-white px-4 py-4">
-  <button
+  <Link
+    href="/nok/death-certificate"
     type="button"
     className="
       flex
-      h-[42px]
+      h-[35px]
       w-full
       items-center
       justify-center
       rounded-[12px]
-      bg-[#2458E8]
+      bg-[#1D4ED8]
       text-[16px]
       font-medium
+      font-roboto
       text-white
       shadow-sm
       transition
@@ -98,7 +100,7 @@ export default function PodRedemptionPage() {
     "
   >
     Proceed
-  </button>
+  </Link>
 </div>
       </section>
     </main>

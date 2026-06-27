@@ -56,10 +56,10 @@ export default function PodUploadPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#E7EBF0] px-5 pb-8 pt-12 text-[#4A4A4A]">
+    <main className="min-h-screen bg-[#E7EBF0] px-5 pb-8 pt-12 text-[#1f1f1f]/80">
       <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col">
         <header className="relative flex items-center justify-center">
-          <button
+          <button title="Back"
             type="button"
             onClick={() => {
               if (step === "claim") {
@@ -70,10 +70,12 @@ export default function PodUploadPage() {
             }}
             className="absolute left-0 text-[#555]"
           >
-            <ArrowLeft size={20} />
+           <Link href="/nok" className="absolute left-0 text-[#555]">
+            <ArrowLeft size={24} />
+          </Link>
           </button>
 
-          <h1 className="font-heading text-[13px] font-black tracking-[0.08em]">
+          <h1 className="font-heading text-[14px] font-sf-condensed font-bold text-[#1f1f1f]/80 tracking-[0.08em]">
             POD Redemption
           </h1>
         </header>
@@ -130,11 +132,11 @@ function DeathCertificateStep({
 
   return (
     <>
-      <h2 className="mt-4 text-center text-[30px] font-black leading-none text-[#2458E8]">
+      <h2 className="mt-4 text-center text-[36px] font-bold font-sf-condensed leading-none text-[#2563EB]">
         Death Certificate
       </h2>
 
-      <p className="mx-auto mt-5 max-w-[300px] text-center text-[13px] font-medium leading-[16px] text-[#666]">
+      <p className="mx-auto mt-5 max-w-[300px] text-center text-[13px] font-medium font-lato leading-[16px] text-[#000000]/95">
         Upload the death certificate of the person who’s POD you’re trying to
         redeem
       </p>
@@ -147,20 +149,20 @@ function DeathCertificateStep({
 
       <div className="mt-auto rounded-[2px] border border-white bg-white/20 p-1">
         <div className="grid grid-cols-[1fr_135px] items-center gap-3">
-          <p className="px-3 text-[14px] text-[#444]">Death Certificate?</p>
+          <p className="px-3 text-[14px] text-[#1f1f1f]/80">Death Certificate?</p>
 
           {hasFile ? (
             <button
               type="button"
               onClick={onNext}
-              className="flex h-[36px] items-center justify-center rounded-[10px] bg-[#2458E8] text-[14px] font-bold text-white active:scale-[0.98]"
+              className="flex h-[36px] items-center justify-center rounded-[10px] bg-[#1D4ED8] text-[14px] font-bold text-white font-roboto active:scale-[0.98]"
             >
               Next →
             </button>
           ) : (
             <label
               htmlFor="death-certificate-input"
-              className="flex h-[36px] cursor-pointer items-center justify-center rounded-[10px] bg-[#2458E8] text-[14px] font-bold text-white active:scale-[0.98]"
+              className="flex h-[36px] cursor-pointer items-center justify-center rounded-[10px] bg-[#1D4ED8] text-[14px] font-bold font-roboto text-white active:scale-[0.98]"
             >
               Upload
             </label>
@@ -197,11 +199,11 @@ function ValidIdStep({
 }) {
   return (
     <>
-      <h2 className="mt-4 text-center text-[30px] font-black leading-none text-[#2458E8]">
+      <h2 className="mt-4 text-center text-[36px] font-sf-condensed font-black leading-none text-[#2563EB]">
         Your valid ID
       </h2>
 
-      <p className="mx-auto mt-5 max-w-[310px] text-center text-[13px] font-medium leading-[16px] text-[#666]">
+      <p className="mx-auto mt-5 max-w-[310px] text-center text-[13px] font-medium leading-[16px] text-black/95">
         Upload the both sides of a valid ID of yourself
       </p>
 
@@ -234,7 +236,7 @@ function ValidIdStep({
         />
       </div>
 
-      <input
+      <input title="input"
         id="front-id-input"
         type="file"
         accept="image/*,.pdf"
@@ -291,19 +293,19 @@ function PodClaimFormStep({ onSubmit }: { onSubmit: () => void }) {
 
   return (
     <>
-      <div className="mt-5 rounded-[8px] border border-white/70 bg-white/20">
-        <h2 className="mt-5 text-center text-[30px] font-black leading-none text-[#2458E8]">
+      <div className="mt-5 rounded-[8px] border border-white/70 bg-white/20 w-[345px]">
+        <h2 className="mt-5 text-center text-[30px] font-black font-sf-condensed leading-none text-[#2563EB]">
           POD Claim Form
         </h2>
 
-        <p className="mx-auto mt-5 max-w-[330px] text-center text-[13px] font-medium leading-[16px] text-[#666]">
+        <p className="mx-auto mt-5 max-w-[330px] text-center text-[14px] font-lato font-medium leading-[16px] text-[#666]">
           You need to fill this form below just to clarify to the Bank that you
           are not a fraud. Please not that once you submit this form, there is no
           correction that can be made, therefore, do well to crosscheck your
           information properly before submitting
         </p>
 
-        <div className="mt-5">
+        <div className="mt-5 font-sf-condensed">
           <FormSection title="Deceased Account Holder Information">
             <Input
               placeholder="Full legal name"
@@ -731,7 +733,7 @@ function PodSuccessStep() {
   return (
     <>
       <div className="mt-8 flex flex-1 flex-col items-center">
-        <div className="flex h-[305px] w-[275px] items-center justify-center rounded-[80px] bg-white/25 shadow-[inset_0_0_35px_rgba(255,255,255,0.35)]">
+        <div className="flex h-[378px] w-[302px] items-center justify-center ">
           <img
             src="/images/pod-success.png"
             alt="POD success"
@@ -741,7 +743,7 @@ function PodSuccessStep() {
 
         <div className="mt-7 h-px w-[280px] bg-black/35" />
 
-        <div className="mt-6 max-w-[310px] space-y-4 text-center text-[14px] leading-[18px] text-[#666]">
+        <div className="mt-6 max-w-[310px] space-y-4 text-center text-[14px] leading-[18px] text-[#666] font-lato">
           <p>
             You have successfully submitted your request for POD as next-of-kin.
           </p>
@@ -752,10 +754,10 @@ function PodSuccessStep() {
         </div>
       </div>
 
-      <div className="mt-auto rounded-[2px] border border-white bg-white/20 p-1">
+      <div className="mt-auto rounded-[12px]  p-1">
         <Link
           href="/dashboard"
-          className="flex h-[57px] w-full items-center justify-center rounded-[9px] bg-[#2458E8] text-[14px] font-bold text-white"
+          className="flex h-[35px] w-full items-center justify-center rounded-[12px] bg-[#1D4ED8] text-[14px] font-roboto font-bold text-white"
         >
           Close
         </Link>
