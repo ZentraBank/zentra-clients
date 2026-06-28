@@ -112,7 +112,7 @@ export default function OnboardingStep2() {
           <LogIn size={16} />
         </Link>
         <Link
-          href="/login"
+          href="/register"
           className="flex h-[52px] items-center justify-center gap-2 px-6 font-sf text-[15px] font-semibold text-[#6B7280] transition hover:text-[#0D0D0D]"
         >
           Skip for now

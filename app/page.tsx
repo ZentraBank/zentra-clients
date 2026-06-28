@@ -146,13 +146,12 @@ export default function WelcomePage() {
                 Zentrabank Gateway is the best thing that can happen to you
               </p>
 
-              <button
-                type="button"
-                onClick={openRegister}
-                className="mt-14 h-[35px] w-[200px] rounded-[12px] bg-[#1D4ED8] px-12 text-[12px] font-bold text-white shadow-lg"
-              >
-                Create account
-              </button>
+              <Link
+              href="/onboarding"
+              className="mt-14 flex h-[35px] w-[200px] items-center justify-center rounded-[12px] bg-[#1D4ED8] px-12 text-[12px] font-bold text-white shadow-lg"
+            >
+              Create account
+            </Link>
             </div>
           </div>
         </section>

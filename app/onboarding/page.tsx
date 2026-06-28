@@ -82,7 +82,7 @@ export default function OnboardingPage() {
         </Link>
 
         <Link
-          href="/login"
+          href="/register"
           className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-white/35 font-sf text-[15px] font-bold text-[#2E8B57] backdrop-blur-sm"
         >
           <Sparkles size={16} strokeWidth={2.5} />
