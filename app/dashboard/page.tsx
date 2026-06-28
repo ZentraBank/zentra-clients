@@ -34,8 +34,8 @@ const quickActions = [
 ];
 
 const services = [
-  { title: "Gift", icon: "/images/gifts-3.png", href: "/gift" },
-  { title: "Donations", icon: "/images/donations-2.png", href: "/donations" },
+  { title: "Gift", icon: "/images/gifts-3.png", href: "/donations-gift/gifts" },
+  { title: "Donations", icon: "/images/donations-2.png", href: "/donations-gift/donations" },
   { title: "Admin. services", icon: "/images/admin-services-2.png", href: "/admin-services" },
   { title: "Investment", icon: "/images/admin-services-2.png", href: "/investment" },
   { title: "Cards", icon: "/images/cards-2.png", href: "/cards" },
@@ -94,7 +94,7 @@ export default function DashboardPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#E7EBF0] pb-[92px] text-[#333]">
-      <section className="mx-auto w-full max-w-[390px] px-4 pt-12">
+      <section className="mx-auto w-full max-w-[390px] px-5 pt-12">
         <header className="flex items-center justify-between rounded-[12px]">
           <div className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-full bg-[#B7D8FF] text-[#2B945D]">
