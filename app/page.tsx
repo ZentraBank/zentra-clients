@@ -276,13 +276,12 @@ export default function WelcomePage() {
           </div>
 
           <div className="mt-10 flex justify-center">
-            <button
-              type="button"
-              onClick={openRegister}
-              className="h-[35px] w-[200px] rounded-[12px] bg-[#1D4ED8] text-[12px] font-bold text-white shadow-lg"
+            <Link
+              href="/onboarding"
+              className="mt-14 flex h-[35px] w-[200px] items-center justify-center rounded-[12px] bg-[#1D4ED8] px-12 text-[12px] font-bold text-white shadow-lg"
             >
-              Create Account
-            </button>
+              Create account
+            </Link>
           </div>
 
           <section id="faqs" className="mx-auto max-w-[390px] px-4 py-5">
