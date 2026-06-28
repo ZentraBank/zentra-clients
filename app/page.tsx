@@ -110,7 +110,7 @@ export default function WelcomePage() {
         </header>
 
         <section className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-[28px] bg-transparent text-white lg:min-h-[560px]">
+          <div className="relative overflow-hidden rounded-[28px]  text-white lg:min-h-[560px]">
             <Image
               src="/images/hero.png"
               alt="ZentraBank city"
