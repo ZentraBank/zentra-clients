@@ -115,7 +115,7 @@ export default function WelcomePage() {
     alt="ZentraBank city"
     fill
     priority
-    className="object-cover"
+    className="object-contain"
   />
 
   {/* Optional dark overlay */}
