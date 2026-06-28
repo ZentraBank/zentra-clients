@@ -109,52 +109,53 @@ export default function WelcomePage() {
           </div>
         </header>
 
-        <section className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-[28px]  text-white lg:min-h-[560px]">
-            <Image
-              src="/images/hero.png"
-              alt="ZentraBank city"
-              fill
-              priority
-              className="object-cover"
-            />
+<section className="relative h-screen w-full overflow-hidden bg-[#E7EBF0]">
+  <Image
+    src="/images/hero.png"
+    alt="ZentraBank city"
+    fill
+    priority
+    className="object-cover"
+  />
 
-            <div className="relative z-10 flex min-h-[455px] flex-col items-center justify-center px-5 py-16 text-center lg:min-h-[560px]">
-              <h1
-                className="
-                  max-w-4xl
-                  text-center
-                  font-sf-condensed
-                  text-[36px]
-                  font-bold
-                  uppercase
-                  leading-[30px]
-                  text-[#1f1f1f]/80
-                  [text-shadow:_-2px_-2px_0_#ffffff,_2px_-2px_0_#ffffff,_-2px_2px_0_#ffffff,_2px_2px_0_#ffffff,_4px_4px_0_#ffffff]
-                  md:text-6xl
-                  md:leading-[64px]
-                "
-              >
-                Welcome to the ONE-
-                <br />
-                STOP Banking
-                <br />
-                Network in USA
-              </h1>
+  {/* Optional dark overlay */}
+  <div className="absolute inset-0 bg-black/15" />
 
-              <p className="mt-8 max-w-xl font-lato text-[14px] font-semibold drop-shadow md:text-lg">
-                Zentrabank Gateway is the best thing that can happen to you
-              </p>
+  <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center">
+    <h1
+      className="
+        max-w-4xl
+        text-center
+        font-sf-condensed
+        text-[36px]
+        font-bold
+        uppercase
+        leading-[34px]
+        text-[#1f1f1f]/80
+        [text-shadow:_-2px_-2px_0_#ffffff,_2px_-2px_0_#ffffff,_-2px_2px_0_#ffffff,_2px_2px_0_#ffffff,_4px_4px_0_#ffffff]
+        md:text-6xl
+        md:leading-[64px]
+      "
+    >
+      Welcome to the ONE-
+      <br />
+      STOP Banking
+      <br />
+      Network in USA
+    </h1>
 
-              <Link
-              href="/onboarding"
-              className="mt-14 flex h-[35px] w-[200px] items-center justify-center rounded-[12px] bg-[#1D4ED8] px-12 text-[12px] font-bold text-white shadow-lg"
-            >
-              Create account
-            </Link>
-            </div>
-          </div>
-        </section>
+    <p className="mt-8 max-w-xl font-lato text-[14px] font-semibold text-white drop-shadow md:text-lg">
+      Zentrabank Gateway is the best thing that can happen to you
+    </p>
+
+    <Link
+      href="/onboarding"
+      className="mt-14 flex h-[35px] w-[200px] items-center justify-center rounded-[12px] bg-[#1D4ED8] text-[12px] font-bold text-white shadow-lg"
+    >
+      Create account
+    </Link>
+  </div>
+</section>
 
         <section id="about" className="mx-auto mt-8 max-w-7xl px-5 lg:px-8">
           <div className="mb-5 -mt-6 flex">
