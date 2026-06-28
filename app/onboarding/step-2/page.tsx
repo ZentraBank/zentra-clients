@@ -47,7 +47,7 @@ export default function OnboardingStep2() {
           </Link>
 
           <Link
-            href="/"
+            href="/register"
             className="mx-auto flex h-[40px] w-[273px] items-center justify-center gap-3 rounded-[9px] bg-white/35 font-roboto text-[16px] text-[#1F1F1F] backdrop-blur-sm"
           >
             {/* <Sparkles size={20} strokeWidth={2.5} /> */}

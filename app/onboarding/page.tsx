@@ -65,31 +65,31 @@ export default function OnboardingPage() {
 
     <div className="relative z-10 flex h-full flex-col items-center justify-between px-8 py-16">
       <div className="pt-4 text-center">
-        <h1 className="font-sf text-[37px] font-bold leading-[37px] text-white">
+        <h1 className="font-sf-condensed text-[48px] font-bold leading-[37px] text-white">
           1-Stop Online
           <br />
           Banking
         </h1>
       </div>
 
-      <div className="mb-8 w-full max-w-[320px] space-y-3">
-        <Link
-          href="/onboarding/step-2"
-          className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-[#2458E8] font-sf text-[15px] font-bold text-white shadow-lg"
-        >
-          Next
-          <LogIn size={17} />
-        </Link>
+     <div className="relative z-20 mb-8 w-full max-w-[320px] space-y-3">
+  <Link
+    href="/onboarding/step-2"
+    className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-[#2458E8] font-sf text-[15px] font-bold text-white shadow-lg"
+  >
+    Next
+    <LogIn size={17} />
+  </Link>
 
-        <Link
-          href="/register"
-          className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-white/35 font-sf text-[15px] font-bold text-[#2E8B57] backdrop-blur-sm"
-        >
-          <Sparkles size={16} strokeWidth={2.5} />
-          <span>Skip</span>
-          <LogIn size={17} />
-        </Link>
-      </div>
+  <Link
+    href="/register"
+    className="flex h-[48px] w-full items-center justify-center gap-3 rounded-[9px] bg-white/35 font-sf-condensed text-[15px] font-bold text-[#2E8B57] backdrop-blur-sm"
+  >
+    <Sparkles size={16} strokeWidth={2.5} />
+    <span>Skip</span>
+    <LogIn size={17} />
+  </Link>
+</div>
     </div>
   </div>
 </section>
