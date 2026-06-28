@@ -66,11 +66,11 @@ const allServices = [
   { title: "Bill Pay", icon: "/images/bill-pay.png", href: "/bill-pay" },
   { title: "Subscription", icon: "/images/admin-services-2.png", href: "/subscribe" },
 
-  { title: "Card setting", icon: "/images/card-lock-2.png", href: "/card-settings" },
+  { title: "Card setting", icon: "/images/card-lock-2.png", href: "/cards" },
   {
     title: "Next-of-kin funds",
     icon: "/images/card-settings-2.png",
-    href: "/next-of-kin",
+    href: "/nok",
     className: "col-span-2",
   },
   { title: "Trans. History", icon: "/images/transfer-2.png", href: "/transactions" },
