@@ -94,7 +94,7 @@ export default function DashboardPage() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#E7EBF0] pb-[92px] text-[#333]">
-      <section className="mx-auto max-w-[390px] px-5 pt-12">
+      <section className="mx-auto w-full max-w-[390px] px-6 pt-12">
         <header className="flex items-center justify-between rounded-[12px]">
           <div className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-full bg-[#B7D8FF] text-[#2B945D]">
@@ -373,7 +373,7 @@ function DashboardServiceCard({
 
 function MoreServicesOverlay({ onClose }: { onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-[999] overflow-y-auto bg-[#E7EBF0] px-4 pb-[100px] pt-5">
+    <div className="fixed inset-0 z-[999] overflow-y-auto bg-[#E7EBF0] px-6 pb-[100px] pt-5">
       <section className="mx-auto max-w-[390px]">
         <div className="mb-3 flex items-center gap-3">
           <div className="h-px flex-1 bg-black/30" />
