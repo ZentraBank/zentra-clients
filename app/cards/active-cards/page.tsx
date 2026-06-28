@@ -66,7 +66,7 @@ export default function ActiveCardsPage() {
               <div className="relative h-[130px] overflow-hidden rounded-[8px] shadow-md">
                 <Image
                   src={card.image}
-                  alt={card.title}
+                  alt={card.type}
                   fill
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />
@@ -75,7 +75,7 @@ export default function ActiveCardsPage() {
 
                 <div className="absolute left-3 top-3">
                   <h3 className="text-[14px] font-bold text-white">
-                    {card.title}
+                    {card.type}
                   </h3>
                 </div>
 

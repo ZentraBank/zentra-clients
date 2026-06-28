@@ -176,7 +176,7 @@ export default function CardsPage() {
 
                 <div className="absolute bottom-2 right-3 text-right">
                   <p className="text-[11px] font-semibold text-white">
-                    {card.type}
+                    {card.name}
                   </p>
                 </div>
               </Link>

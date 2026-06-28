@@ -1,11 +1,11 @@
 "use client";
 
 import { Bell, Menu } from "lucide-react";
-import { useTenantStore } from "@/store/tenant.store";
+
 import { useUIStore } from "@/store/ui.store";
 
 export default function Topbar() {
-  const tenant = useTenantStore((state) => state.tenant);
+
   const openSidebar = useUIStore((state) => state.openSidebar);
 
   return (
@@ -19,9 +19,7 @@ export default function Topbar() {
         </button>
 
         <div>
-          <h2 className="text-sm font-bold text-gray-900">
-            {tenant?.app_name || "ZentraBank"}
-          </h2>
+          <h1 className="text-lg font-bold text-white">ZentraBank</h1>
           <p className="text-xs text-gray-500">Welcome back</p>
         </div>
       </div>
