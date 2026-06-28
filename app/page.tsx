@@ -125,7 +125,7 @@ export default function WelcomePage() {
                   max-w-4xl
                   text-center
                   font-sf-condensed
-                  text-[24px]
+                  text-[36px]
                   font-bold
                   uppercase
                   leading-[30px]
