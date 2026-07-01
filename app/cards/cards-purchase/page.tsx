@@ -149,7 +149,7 @@ export default function CardDetailsPage() {
       <div className="fixed bottom-0 left-1/2 z-50 w-full max-w-[430px] -translate-x-1/2 border-t border-white/50 bg-[#E7EBF0]/90 px-6 py-4 backdrop-blur-md lg:hidden">
         <Link
           href="/cards/purchase-crypto"
-          className="flex h-[42px] w-full items-center justify-center gap-4 rounded-[10px] bg-[#2458E8] text-[16px] font-bold text-white shadow-md active:scale-[0.98]"
+          className="flex h-[36px] w-full items-center justify-center gap-4 rounded-[12px] bg-[#1D4ED8] text-[13px] text-white shadow-md active:scale-[0.98]"
         >
           Buy card $30
           <ArrowRight size={21} />
