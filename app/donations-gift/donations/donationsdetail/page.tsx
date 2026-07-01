@@ -1,112 +1,114 @@
+
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Plus } from "lucide-react";
+import { ArrowLeft, Gift } from "lucide-react";
 
-const donors = Array.from({ length: 8 }, (_, index) => ({
-  id: index + 1,
-  name: "McCatherine Thyler",
-  description:
-    "Cyrbersecurity expert with 5 years in the field. A renowned Philanthropist.",
-  image: "/images/donations-avatar-2.png",
-}));
+type DonationGiftItem = {
+  id: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  type: "gift" | "donation";
+};
 
-export default function DonationDetailsPage() {
+const mockDonationGifts: DonationGiftItem[] = [
+  {
+    id: "gift-001",
+    title: "Transaction update",
+    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    buttonText: "Redeem this Gift",
+    type: "gift",
+  },
+  {
+    id: "gift-002",
+    title: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    buttonText: "Redeem this Gift",
+    type: "gift",
+  },
+  {
+    id: "donation-001",
+    title: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "Vorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    buttonText: "Redeem this donation",
+    type: "donation",
+  },
+];
+
+export default function DonationsAndGiftPage() {
+  const handleRedeem = (item: DonationGiftItem) => {
+    console.log("Redeem item:", item);
+
+    // LIVE BACKEND LATER:
+    // await fetch(`/api/donations-gifts/${item.id}/redeem`, {
+    //   method: "POST",
+    // });
+  };
+
   return (
-    <main
-      className="min-h-screen overflow-hidden bg-[#9AF0A8]"
-      style={{
-        backgroundImage: "url('/images/donations-bg-2.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col px-5 pb-8 pt-10">
+    <main className="min-h-screen bg-[#e8edf3] text-[#3f3f3f]">
+      <section className="mx-auto min-h-screen w-full max-w-[430px] px-6 pb-8 pt-12">
         <header className="relative flex items-center justify-center">
-          <Link href="/donation" className="absolute left-0 text-[#3f3f3f]">
+          <Link href="/profile" className="absolute left-0 text-[#555]">
             <ArrowLeft size={20} />
           </Link>
 
-          <h1 className="font-heading text-[13px] font-bold tracking-[0.08em] text-white">
-            Donation
+          <h1 className="font-heading text-[13px] font-bold tracking-[0.15em]">
+            Donations and Gift
           </h1>
         </header>
 
-        <div className="mt-6 flex justify-center">
-          <div className="relative h-[150px] w-[292px] overflow-hidden rounded-[50%] ]">
-            <Image
-              src="/images/donation-hands.png"
-              alt="Donation"
-              fill
-              priority
-              className="object-cover"
-            />
+        <div className="mt-6 space-y-3">
+  {mockDonationGifts.map((item) => (
+    <div
+      key={item.id}
+      className="rounded-[7px] bg-white px-3 py-3 shadow-sm"
+    >
+      <div
+        onClick={() => {
+          console.log("Open details:", item.id);
+
+          // router.push(`/donations/${item.id}`);
+        }}
+        className="cursor-pointer"
+      >
+        <div className="flex items-start gap-2">
+          <Gift size={22} className="mt-1 shrink-0 text-[#1D4ED8]" />
+
+          <div className="min-w-0 flex-1">
+            <h2 className="text-[14px] font-medium leading-[16px] text-[#444]">
+              {item.title}
+            </h2>
+
+            
           </div>
         </div>
+      </div>
 
-        <div className="mx-auto mt-8 max-w-[330px] space-y-4 text-center text-[15px] leading-[20px] text-[#6b6b6b]">
-          <p>
-            Experience how amazing it is to enjoy free-will donations from
-            people you know and don’t know. Just pick from the list of
-            Philanthropists who are touched by the natural experiences of the
-            poor and needy, to get support.
-          </p>
-
-          <p>Do you need funds as an upcoming Philanthropist?</p>
-
-          <p>Do need funds to help the poor and needy?</p>
-        </div>
-
-        <section className="mt-6 rounded-[8px] bg-[#8FC2FF] px-2 pb-3 pt-4 shadow-[0_0_8px_rgba(0,0,0,0.18)]">
-          <h2 className="mb-2 text-[13px] font-black text-[#222]">
-            Available donors
-          </h2>
-
-          <div className="max-h-[360px] space-y-2 overflow-y-auto pr-1">
-            {donors.map((donor) => (
-              <article
-                key={donor.id}
-                className="flex min-h-[76px] items-center gap-3 rounded-[7px] bg-[#eef5ff] px-2 py-2 shadow-sm"
-              >
-                <div className="relative h-[66px] w-[66px] shrink-0 overflow-hidden rounded-[5px]">
-                  <Image
-                    src={donor.image}
-                    alt={donor.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="min-w-0 flex-1">
-                  <h3 className="truncate text-[17px] font-medium leading-none text-[#222]">
-                    {donor.name}
-                  </h3>
-
-                  <p className="mt-1 text-[12px] leading-[12px] text-[#333]">
-                    {donor.description}
-                  </p>
-                </div>
-
-                <div className="flex w-[78px] shrink-0 flex-col items-end gap-2">
-                  <button
-                    type="button"
-                    className="flex h-[27px] w-[78px] items-center justify-center gap-1 rounded-full bg-[#2458E8] text-[13px] font-medium text-[#111] shadow-sm active:scale-95"
-                  >
-                    Request
-                    <Plus size={15} className="text-white" />
-                  </button>
-
-                  <span className="flex h-[22px] w-[78px] items-center justify-center rounded-full bg-white text-[13px] text-[#555] shadow-sm">
-                    Donor
-                  </span>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+      <div className="mt-2 flex justify-end">
+        <p className="mt-2 text-[10px] font-medium leading-[11px] text-[#777]">
+              {item.description}
+            </p>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleRedeem(item);
+          }}
+          className={`h-[25px] min-w-[150px] rounded-full px-4 text-[12px] font-bold text-white transition active:scale-[0.98] ${
+            item.type === "gift"
+              ? "bg-[#d99200]"
+              : "bg-[#1D4ED8]"
+          }`}
+        >
+          {item.buttonText}
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
       </section>
     </main>
   );
 }
+

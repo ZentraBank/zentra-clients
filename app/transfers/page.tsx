@@ -99,7 +99,7 @@ export default function TransferPage() {
           </div>
 
           <Link
-            href="/transfer/add-bank"
+            href="/transfers/add-bank"
             className="flex h-[48px] items-center justify-center gap-6 text-[13px] font-medium text-[#4F4F4F]"
           >
             Add a new bank account

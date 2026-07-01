@@ -99,7 +99,7 @@ export default function WelcomePage() {
               Login <ArrowRight size={17} className="text-[#2E8B57]" />
             </button>
 
-            <button
+            <button title="Open menu"
               type="button"
               onClick={() => setMenuOpen(true)}
               className="grid h-11 w-11 place-items-center rounded-full bg-white/70 shadow-sm"

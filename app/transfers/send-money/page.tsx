@@ -55,7 +55,7 @@ export default function SendMoneyPage() {
     <main className="relative min-h-screen bg-[#E7EBF0] text-[#4A4A4A]">
       <section className="mx-auto min-h-screen w-full max-w-[430px] px-6 pb-[110px] pt-12">
         <header className="relative flex items-center justify-center">
-          <Link href="/transfer" className="absolute left-0 text-black/60">
+          <Link href="/transfers" className="absolute left-0 text-black/60">
             <ArrowLeft size={21} />
           </Link>
 

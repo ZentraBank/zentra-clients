@@ -78,7 +78,7 @@ export default function NotificationsPage() {
         {/* Header */}
         <header className="relative mb-4 flex items-center justify-center">
           <Link
-            href="/dashboard"
+            href="/profile"
             className="absolute left-0 top-1/2 -translate-y-1/2"
           >
             <ArrowLeft size={20} className="text-[#666]" />

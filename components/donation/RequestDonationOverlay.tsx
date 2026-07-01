@@ -25,23 +25,28 @@ export default function RequestDonationOverlay({
   return (
     <div className="fixed inset-0 z-[100] bg-black/30 backdrop-blur-sm">
       <section
-        className="
-          absolute
-          bottom-0
-          left-0
-          right-0
-          mx-auto
-          h-[92vh]
-          max-w-[430px]
-          overflow-y-auto
-          rounded-t-[24px]
-          bg-[#E7EBF0]
-          px-5
-          pt-6
-          animate-in
-          slide-in-from-bottom
-        "
-      >
+  className="
+    absolute
+    bottom-0
+    left-0
+    right-0
+    mx-auto
+    h-[92vh]
+    max-w-[430px]
+    overflow-y-auto
+    rounded-t-[24px]
+    px-5
+    pt-6
+    animate-in
+    slide-in-from-bottom
+  "
+  style={{
+    backgroundImage: "url('/images/cards-bg.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
         <header className="relative flex items-center justify-center">
           <button
             onClick={onClose}
@@ -50,7 +55,7 @@ export default function RequestDonationOverlay({
             <ArrowLeft size={20} />
           </button>
 
-          <h1 className="font-heading text-[13px] font-bold tracking-[0.08em]">
+          <h1 className="font-heading text-[13px] font-bold text-white tracking-[0.08em]">
             Donation
           </h1>
         </header>

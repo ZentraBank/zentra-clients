@@ -26,7 +26,7 @@ export default function DonationRequestPage() {
     >
       <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col">
         <header className="relative flex items-center justify-center">
-          <Link href="/donation" className="absolute left-0 text-[#222]">
+          <Link href="/donations-gift/donations" className="absolute left-0 text-[#222]">
             <ArrowLeft size={20} />
           </Link>
 

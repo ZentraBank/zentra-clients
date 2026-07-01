@@ -48,7 +48,7 @@ export default function InvestmentIntroPage() {
 
         <div className="mt-auto w-full px-6">
           <Link
-            href="/investment"
+            href="/investment/investment-types"
             className="mx-auto flex h-[32px] w-full max-w-[273px] items-center justify-center gap-3 rounded-[9px] bg-[#1D4ED8] text-[14px] font-bold text-white shadow-lg transition active:scale-[0.98]"
           >
             Invest now

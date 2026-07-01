@@ -29,7 +29,7 @@ import BottomNav from "@/components/layout/BottomNav";
 const quickActions = [
   { title: "Airtime", icon: "/images/airtime-3.png", href: "/airtime" },
   { title: "Data", icon: "/images/data-3.png", href: "/data" },
-  { title: "Transfer", icon: "/images/transfer-2.png", href: "/transfer" },
+  { title: "Transfer", icon: "/images/transfer-2.png", href: "/transfers" },
   { title: "Card Lock", icon: "/images/card-lock-2.png", href: "/card-lock" },
 ];
 
@@ -95,37 +95,42 @@ export default function DashboardPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#E7EBF0] pb-[92px] text-[#333]">
       <section className="mx-auto w-full max-w-[390px] px-5 pt-12">
-        <header className="flex items-center justify-between rounded-[12px]">
-          <div className="flex items-center gap-3">
-            <div className="grid h-11 w-11 place-items-center rounded-full bg-[#B7D8FF] text-[#2B945D]">
-              <SendHorizontal size={24} />
-            </div>
+<header className="flex items-center justify-between rounded-[12px]">
+  <Link
+    href="/profile"
+    className="flex items-center gap-3 transition-opacity hover:opacity-80"
+  >
+    <div className="relative h-11 w-11 overflow-hidden rounded-full border border-white bg-[#B7D8FF] shadow-sm">
+      <Image
+        src="/images/profile-avatar.png"
+        alt="Johnson Dutcher"
+        fill
+        className="object-cover"
+      />
+    </div>
 
-            <div>
-            <h1 className="text-[13px] font-semibold font-lato">Johnson Dutcher</h1>
-            <p className="text-[12px] font-medium font-lato">
-              {/* First word with its own color */}
-              <span className="text-[#333333]">Basic</span>
-              
-              {/* Add a space between the spans */}
-              {" "}
-              
-              {/* Second word with the original green color */}
-              <span className="text-[#2B945D]">Verified!</span>
-            </p>
-          </div>
-          </div>
+    <div>
+      <h1 className="font-lato text-[13px] font-semibold">
+        Johnson Dutcher
+      </h1>
 
-          <div className="flex items-center gap-2 text-[#2B945D]">
-            <Link href="/notifications" aria-label="Notifications">
-              <Bell size={17} />
-            </Link>
+      <p className="font-lato text-[12px] font-medium">
+        <span className="text-[#333333]">Basic</span>{" "}
+        <span className="text-[#2B945D]">Verified!</span>
+      </p>
+    </div>
+  </Link>
 
-            <Link href="/settings" aria-label="Settings">
-              <Settings size={17} />
-            </Link>
-          </div>
-        </header>
+  <div className="flex items-center gap-2 text-[#2B945D]">
+    <Link href="/notifications" aria-label="Notifications">
+      <Bell size={17} />
+    </Link>
+
+    <Link href="/settings" aria-label="Settings">
+      <Settings size={17} />
+    </Link>
+  </div>
+</header>
 
         <section className="mt-4 rounded-[9px] bg-[#2F9158] px-3 py-3 text-white shadow-sm">
           <div className="flex items-center gap-2 text-[12px]">
@@ -458,13 +463,18 @@ function TransactionCard({
         )}
 
         <div>
-          <p className="text-[11px] text-black/30" font-lato>{name}</p>
-          <h4 className="text-[13px] leading-none text-black/60 font-lato">{bank}</h4>
+          <p className="font-lato text-[11px] text-black/30">
+            {name}
+          </p>
+
+          <h4 className="font-lato text-[13px] leading-none text-black/60">
+            {bank}
+          </h4>
         </div>
       </div>
 
       <p
-        className={`text-[14px] font-semibold font-sf ${
+        className={`font-sf text-[14px] font-semibold ${
           isIn ? "text-[#2E8B57]/80" : "text-[#C0392B]/80"
         }`}
       >
